@@ -31,11 +31,9 @@ def getAllNodes(url):  # 从ssr链接汇总得到所有节点信息
     for ss in links:
         #print(ss)
         if len(ss) > 10:
-            link = ss.split('//')[1].split("'")[0]    # 不同订阅不同的切分形式
-            #link = ss.split('//')[1].split(" ss")[0]   # 不同订阅不同的切分形式
-            # node = getNode(link) if ss.split(':')[0] == "ss" else getNodeR(link)
+            link = ss.split('//')[1]
             if ss.split(':')[0] == "ss":
-                print('ss')
+                #print('ss')
                 node = getNode(link)
                 allnodes.append(node)
             else:
@@ -68,7 +66,7 @@ def getNodeR(link):  # 从ssr链接中得到节点信息
     protocol = info.split(':')[2]
     method = info.split(':')[3]
     obfs = info.split(':')[4]
-    remark = getName(info.split('&')[2].split('=')[1])
+    remark = getName(info.split('&')[2].split('=')[1]).rstrip()
     obfsparam = getName(info.split('&')[0].split('=')[-1])
     proparam = getName(info.split('&')[1].split('=')[1])
     node = [remark, server, port, method, pwd, protocol, obfs, proparam,obfsparam]
