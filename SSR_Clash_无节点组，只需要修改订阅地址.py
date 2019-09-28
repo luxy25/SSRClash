@@ -27,17 +27,22 @@ def getAllLinks(url):  # 从加密文本解析出所有ssr链接
 def getAllNodes(url):  # 从ssr链接汇总得到所有节点信息
     allnodes = []
     links = getAllLinks(url)
+    #print(links)
     for ss in links:
-        link = ss.split('//')[1].split("'")[0]
-        # node = getNode(link) if ss.split(':')[0] == "ss" else getNodeR(link)
-        if ss.split(':')[0] == "ss":
-            print('ss')
-            node = getNode(link)
-            allnodes.append(node)
-        else:
-            print('ssr')
-            node = getNodeR(link)
-            allnodes.append(node)
+        #print(ss)
+        if len(ss) > 10:
+            link = ss.split('//')[1].split("'")[0]    # 不同订阅不同的切分形式
+            #link = ss.split('//')[1].split(" ss")[0]   # 不同订阅不同的切分形式
+            # node = getNode(link) if ss.split(':')[0] == "ss" else getNodeR(link)
+            if ss.split(':')[0] == "ss":
+                print('ss')
+                node = getNode(link)
+                allnodes.append(node)
+            else:
+                print('ssr')
+                node = getNodeR(link)
+                allnodes.append(node)
+            
     return allnodes
 
 
@@ -120,18 +125,18 @@ def setPG(nodes):  # 设置策略组 auto,Fallback-auto,Proxy
     proxy_names = []
     for node in nodes:
         proxy_names.append(node[0])
-    #auto = "- { name: \'auto\', type: url-test, proxies: " + str( proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
+    auto = "- { name: 'auto', type: url-test, proxies: " + str( proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
 
-    #Fallback = "- { name: 'Fallback-auto', type: fallback, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
+    Fallback = "- { name: 'Fallback-auto', type: fallback, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
         
-    Proxy = "- { name: 'PROXY', type: select, proxies: " + str(proxy_names) + " }\n"
+    Proxy = "- { name: 'PROXY', type: select, proxies: " +"[\"auto\",\"Fallback-auto\","+ str(proxy_names).split('[')[1] + " }\n"
     Apple = "- { name: 'Apple', type: select, proxies: "+" [\"PROXY\",\"DIRECT\"] }" +"\n"
     GlobalMedia = "- { name: 'ForeignMedia', type: select, proxies: "+" [\"PROXY\"] }" +"\n"
     MainlandMedia = "- { name: 'DomesticMedia', type: select, proxies: "+" [\"DIRECT\"] }" +"\n"
     RejectWeb =  "- { name: 'Hijacking', type: select, proxies: "+" [\"REJECT\",\"DIRECT\"] }"+"\n"
     Final = "- { name: 'Final', type: select, proxies: "+ " [\"PROXY\",\"DIRECT\",\"REJECT\"] }\n" +"\n"+"\n"+"\n"+"\n"+"\n"  
     Rule = "#规则"+"\n"+"Rule:"+"\n"
-    ProxyGroup = ['\nProxy Group:\n',Proxy,Apple,GlobalMedia,MainlandMedia,RejectWeb,Final,Rule]
+    ProxyGroup = ['\nProxy Group:\n',auto,Fallback,Proxy,Apple,GlobalMedia,MainlandMedia,RejectWeb,Final,Rule]
     return ProxyGroup
 
 
@@ -139,7 +144,9 @@ def getClash(nodes):  #写文件
 
     rules = getBasefile(
         'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Clash/Pro.yaml')
-    gener = rules.split('# 代理节点')[0]
+    gener = getBasefile(
+        'https://raw.githubusercontent.com/lzdnico/ToClash/master/General.yml')
+
     with codecs.open("./config.yaml", "w",encoding = 'utf-8') as f:
         f.writelines(gener)
 
@@ -153,6 +160,6 @@ def getClash(nodes):  #写文件
 
 
 if __name__ == "__main__":
-    url = " "         #替换订阅
+    url = ""         #替换订阅
     nodes = getAllNodes(url)
     getClash(nodes)
