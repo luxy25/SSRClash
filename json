@@ -8,64 +8,29 @@
         "excluded_routes= 192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8",
         ";icmp_auto_reply=true"
     ],
-    "dns": [
-        "server=117.50.10.10",
-        "server=119.29.29.29",
-        "server=223.5.5.5",
-        "server=114.114.114.114",
-        "server=8.8.8.8"
-    ],
+ 
     "policy": {
-        "Hong Kong": {
+        "故障切换": {
             "type": "available",
-            "policies": [],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png"
+            "policies": []
+          
         },
-        "Taiwan": {
-            "type": "available",
-            "policies": [],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Taiwan.png"
+        
+        "手动选择": {
+            "type": "static",
+            "policies": []
+        
         },
-        "Japan": {
-            "type": "available",
-            "policies": [],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Japan.png"
-        },
-        "Singapore": {
-            "type": "available",
-            "policies": [],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Singapore.png"
-        },
-        "America": {
-            "type": "available",
-            "policies": [],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/United_States.png"
-        },
-        "Others": {
+        "Policy": {
             "type": "static",
             "policies": [
-                "Policy",
+                "故障切换",
+                "手动选择",
                 "Direct"
             ],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png"
+            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Proxy.png"
         },
-        "Domestic": {
-            "type": "static",
-            "policies": [
-                "Direct",
-                "Policy",
-                "Hong Kong"
-            ],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Domestic.png"
-        },
-        "Apple": {
-            "type": "static",
-            "policies": [
-                "Policy",
-                "Direct"
-            ],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png"
-        },
+        
         "Advertising": {
             "type": "static",
             "policies": [
@@ -84,82 +49,76 @@
             ],
             "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hijacking.png"
         },
+
+        "Apple": {
+            "type": "static",
+            "policies": [
+                "Policy",
+                "Direct"
+            ],
+            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png"
+        },
+
+        "Domestic": {
+            "type": "static",
+            "policies": [
+                "Direct",
+                "Policy"
+            ],
+            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Domestic.png"
+        },
+
         "Streaming": {
             "type": "static",
             "policies": [
-                "Hong Kong",
-                "Taiwan",
-                "Japan",
-                "Singapore",
-                "America",
+                "Policy",
+                "故障切换",
+                "手动选择",
                 "Direct"
             ],
             "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png"
         },
+        
         "Bilibili&iQIYI": {
             "type": "static",
             "policies": [
-                "Domestic",
-                "Policy",
-                "Hong Kong",
-                "Taiwan"
+                "Direct",
+                "故障切换",
+                "手动选择",
+                "Policy"
             ],
             "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/iQIYI&bilibili.png"
         },
-        "Policy": {
+        
+        "Others": {
             "type": "static",
             "policies": [
-                "Hong Kong",
-                "Taiwan",
-                "Japan",
-                "Singapore",
-                "America",
+                "Policy",
+                "故障切换",
+                "手动选择",
                 "Direct"
             ],
-            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Proxy.png"
+            "img-url": "https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png"
         }
+    
     },
     "server_remote": [
         {
-            "url": "https://example.com",
-            "tag": "Hong_Kong",
+            "url": "https://z2o.fun/link/9QqDrB",
+            "tag": "hape",
             "type": "ssr",
             "policies": [
-                "Hong Kong"
+                "故障切换"
             ]
         },
         {
-            "url": "https://example.com",
-            "tag": "Taiwan",
+            "url": "https://z2o.fun/link/9QqDrB",
+            "tag": "hape",
             "type": "ssr",
             "policies": [
-                "Taiwan"
+                "手动选择"
             ]
-        },
-        {
-            "url": "https://example.com",
-            "tag": "Japan",
-            "type": "ssr",
-            "policies": [
-                "Japan"
-            ]
-        },
-        {
-            "url": "https://example.com",
-            "tag": "Singapore",
-            "type": "ssr",
-            "policies": [
-                "Singapore"
-            ]
-        },
-        {
-            "url": "https://example.com",
-            "tag": "America",
-            "type": "ssr",
-            "policies": [
-                "America"
-            ]
-        }
+        }    
     ],
     "filter_remote": [
         {
