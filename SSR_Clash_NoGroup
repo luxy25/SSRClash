@@ -11,67 +11,80 @@ def getBasefile(url):  # 获取订阅链接加密文本
         html.raise_for_status
         html.encoding = html.apparent_encoding
         return str(html.text)
-    except:
-        return "错误"
+    except Exception as e:
+        print('getBasefile Error:', e)
 
 
 def getAllLinks(url):  # 从加密文本解析出所有ssr链接
-    links = getBasefile(url)
-    result = decodeInfo(links)
-    alllinks = result.split('\\n')
-    if len(alllinks[-1]) < 10:
-        alllinks.pop()
-    return alllinks
+    try:
+        links = getBasefile(url)
+        result = decodeInfo(links)
+        alllinks = result.split('\\n')
+        if len(alllinks[-1]) < 10:
+            alllinks.pop()
+        return alllinks
+    except Exception as e:
+        print('getAllLinks Error:', e)
 
 
 def getAllNodes(url):  # 从ssr链接汇总得到所有节点信息
-    allnodes = []
-    links = getAllLinks(url)
-    #print(links)
-    for ss in links:
-        #print(ss)
-        if len(ss) > 10:
-            link = ss.split('//')[1]
-            if ss.split(':')[0] == "ss":
-                #print('ss')
-                node = getNode(link)
-                allnodes.append(node)
-            else:
-                print('ssr')
-                node = getNodeR(link)
-                allnodes.append(node)
-            
-    return allnodes
+    try:
+        allnodes = []
+        links = getAllLinks(url)
+        #print(links)
+        for ss in links:
+            #print(ss)
+            if len(ss) > 10:
+                link = ss.split('//')[1]
+                if ss.split(':')[0] == "ss":
+                    #print('ss')
+                    node = getNode(link)
+                    allnodes.append(node)
+                else:
+                    print('ssr')
+                    node = getNodeR(link)
+                    allnodes.append(node)        
+        return allnodes
 
+    except Exception as e:
+        print('getAllNodes Error:', e)
 
 
 
 def getNode(link):  # 从ss链接中得到节点信息
-    info = decodeInfo(link)
-    method = info.split(':')[0]
-    pwd = info.split("@")[0].split(":")[1]
-    server = info.split("@")[1].split(":")[0]
-    port = info.split(':')[2]
-    remark = server
-    node = [remark, server, port, method, pwd]
-    return node
-
+    try:
+        info = decodeInfo(link)
+        method = info.split(':')[0]
+        pwd = info.split("@")[0].split(":")[1]
+        server = info.split("@")[1].split(":")[0]
+        port = info.split(':')[2]
+        remark = server
+        node = [remark, server, port, method, pwd]
+        return node
+    except Exception as e:
+        print('getNodeR Error:', e)
 
 def getNodeR(link):  # 从ssr链接中得到节点信息
-    info = decodeInfo(link)
-    #print (info)
-    pwd = decodeInfo(info.split('/')[0].split(':')[-1]).split("'")[1]
-    server = info.split(':')[0].split("'")[1]
-    port = info.split(':')[1]
-    protocol = info.split(':')[2]
-    method = info.split(':')[3]
-    obfs = info.split(':')[4]
-    remark = getName(info.split('&')[2].split('=')[1]).rstrip()
-    obfsparam = getName(info.split('&')[0].split('=')[-1])
-    proparam = getName(info.split('&')[1].split('=')[1])
-    node = [remark, server, port, method, pwd, protocol, obfs, proparam,obfsparam]
-    print (node)
-    return node
+    try:
+        info = decodeInfo(link)
+        #print (info)
+        pwd = decodeInfo(info.split('/')[0].split(':')[-1]).split("'")[1]
+        server = info.split(':')[0].split("'")[1]
+        port = info.split(':')[1]
+        protocol = info.split(':')[2]
+        method = info.split(':')[3]
+        obfs = info.split(':')[4]
+        remark = getName(info.split('&')[2].split('=')[1]).rstrip()
+        obfsparam = getName(info.split('&')[0].split('=')[-1])
+        proparam = getName(info.split('&')[1].split('=')[1])
+        node = [remark, server, port, method, pwd, protocol, obfs, proparam,obfsparam]
+        print (node[0])
+        return node
+    
+    except Exception as e:
+        print('getNodeR Error:', e)
+
+
 
 
 def getName(info):  # 得到节点名称（有待合并）
@@ -123,23 +136,25 @@ def setPG(nodes):  # 设置策略组 auto,Fallback-auto,Proxy
     proxy_names = []
     for node in nodes:
         proxy_names.append(node[0])
-    #auto = "- { name: \'auto\', type: url-test, proxies: " + str( proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
 
-    #Fallback = "- { name: 'Fallback-auto', type: fallback, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
-        
-    Proxy = "- { name: 'PROXY', type: select, proxies: " + str(proxy_names) + " }\n"
+    #auto = "- { name: \'延迟最低', type: url-test, proxies: " + str( proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
+    Fallback = "- { name: '故障切换', type: fallback, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
+    LoadBalance = "- { name: '负载均衡', type: load-balance, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"   
+    static = "- { name: '手动选择', type: select, proxies: " + str(proxy_names) + " }\n"
+    Proxy = "- { name: 'PROXY', type: select, proxies: " + " [\"故障切换\",\"负载均衡\",\"手动选择\",\"DIRECT\"] }" +"\n"  
     Apple = "- { name: 'Apple', type: select, proxies: "+" [\"PROXY\",\"DIRECT\"] }" +"\n"
     GlobalMedia = "- { name: 'ForeignMedia', type: select, proxies: "+" [\"PROXY\"] }" +"\n"
     MainlandMedia = "- { name: 'DomesticMedia', type: select, proxies: "+" [\"DIRECT\"] }" +"\n"
     RejectWeb =  "- { name: 'Hijacking', type: select, proxies: "+" [\"REJECT\",\"DIRECT\"] }"+"\n"
     Final = "- { name: 'Final', type: select, proxies: "+ " [\"PROXY\",\"DIRECT\",\"REJECT\"] }\n" +"\n"+"\n"+"\n"+"\n"+"\n"  
     Rule = "#规则"+"\n"+"Rule:"+"\n"
-    ProxyGroup = ['\nProxy Group:\n',Proxy,Apple,GlobalMedia,MainlandMedia,RejectWeb,Final,Rule]
+    ProxyGroup = ['\nProxy Group:\n',Fallback,LoadBalance,static,Proxy,Apple,GlobalMedia,MainlandMedia,RejectWeb,Final,Rule]
     return ProxyGroup
 
 
 def getClash(nodes):  #写文件
-
+    print('\n\n\n应该会打印出节点名字，如果没有请检测\n\n\n')
+    print('正在写文件，此步出错大概率网络问题。重新运行脚本\n\n\n')
     rules = getBasefile(
         'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Clash/Pro.yaml')
     gener = getBasefile(
@@ -155,9 +170,13 @@ def getClash(nodes):  #写文件
     rule = rules.split('Rule:\n')[1]
     with codecs.open("./config.yaml", "a",encoding = 'utf-8') as f:
         f.writelines(rule)
+    print('生成成功，将同目录下config.yaml拖到软件中即可使用')
 
 
 if __name__ == "__main__":
-    url = ""         #替换订阅
-    nodes = getAllNodes(url)
-    getClash(nodes)
+    try:
+        url = ""         #替换订阅，不一定适用所有机场
+        nodes = getAllNodes(url)
+        getClash(nodes)
+    except Exception as e:
+        print('main Error:', e)
