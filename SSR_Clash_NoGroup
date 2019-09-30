@@ -3,180 +3,110 @@
 import requests
 import base64
 import codecs
+import os
+import  re
+import urllib3
+urllib3.disable_warnings()
 
-
-def getBasefile(url):  # 获取订阅链接加密文本
+def safe_base64_decode(s): # 解码
     try:
-        html = requests.get(url)
-        html.raise_for_status
-        html.encoding = html.apparent_encoding
-        return str(html.text)
+        if len(s) % 4 != 0:
+            s = s + '=' * (4 - len(s) % 4)
+        base64_str = base64.urlsafe_b64decode(s)
+        return bytes.decode(base64_str)
     except Exception as e:
-        print('getBasefile Error:', e)
+        print('解码错误:', e)
+
+def Retry_request(url): #超时重传
+    flag=True
+    while flag:
+        try:
+            header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
+            res = requests.get(url, headers=header, timeout=5, verify=False) # verify =false 防止请求时因为代理导致证书不安全
+            if res.headers['Connection']!='close':
+                flag=False
+                return res.text
+        except Exception as e:
+            print('注意检查网络，下载文件出错，对应的url地址为：'+url,e)
 
 
-def getAllLinks(url):  # 从加密文本解析出所有ssr链接
+def writeRules(sublink): #写回配置
     try:
-        links = getBasefile(url)
-        result = decodeInfo(links)
-        alllinks = result.split('\\n')
-        if len(alllinks[-1]) < 10:
-            alllinks.pop()
-        return alllinks
+        other=[]
+        data = Retry_request(sublink)    #请求订阅
+        ssrdata=safe_base64_decode(data).strip().split('\n')
+        rules = Retry_request('https://raw.githubusercontent.com/ConnersHua/Profiles/master/Clash/Pro.yaml')        #请求规则_神机规则
+        p_rule= Retry_request('https://raw.githubusercontent.com/lzdnico/ToClash/master/General.yml')               #基础规则_默认不配置DNS
+        #p_rule=rules.split('Proxy:')[0]                                                                            #基础规则_默认配置DNS,与上面二选一
+        l_rule =  rules.split('Rule:\n')[1]
+        Peoxies = 'Proxy:\n'
+        
+        for ssr in ssrdata:                                                   #节点组
+            
+            ssrlink=safe_base64_decode(ssr.replace('ssr://', ''))
+            config=re.split(':|&|=|/\?',ssrlink)
+            remark =safe_base64_decode(config[11])
+
+
+            #接下来是给节点加图标的，需要深度自定义，可以全部删除
+            if "30倍" in remark:
+                continue
+            if "香港" in remark:
+                remark = '🇭🇰' + remark
+            if "美国"  in remark or "狮城" in remark :
+                remark = '🇺🇸' + remark
+            if "深港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
+                remark = '🇨🇳 👉👉 🇭🇰' + remark
+            if "深美" in remark  or "沪美" in remark  or "京美" in remark or "杭美" in remark:
+                remark = '🇨🇳 👉👉 🇺🇸' + remark
+            if "深日" in remark  or "沪日" in remark  or "京日" in remark or "杭日" in remark:
+                remark = '🇨🇳 👉👉 🇯🇵' + remark
+            if "深台" in remark  or "沪台" in remark  or "京台" in remark or "杭台" in remark:
+                remark = '🇨🇳 👉👉 🇨🇳' + remark
+            #加图标到此结束
+
+            print(remark)
+
+            pwd = safe_base64_decode(config[5])
+            obfsparam=safe_base64_decode(config[7])
+            protoparam =safe_base64_decode(config[9])          
+            Json={ 'name': remark, 'type': 'ssr', 'server': config[0], 'port': config[1], 'password':pwd , 'cipher': config[3], 'protocol': config[2], 'protocolparam': protoparam, 'obfs': config[4], 'obfsparam': obfsparam }
+            #print(Json)
+            Peoxies +='- '+str(Json)+'\n'
+            other.append(remark)
+
+                                                     #策略组
+        ProxyGroup='\n\nProxy Group:\n\n'\
+                '- { name: "😀故障切换", type: "fallback", "proxies": ' + str(other) + ', url: "http://www.gstatic.com/generate_204", interval: 300'+ '}\n\n\n'\
+                '- { name: "🚀手动选择", type: "select", "proxies": ' + str(other) + '}\n\n\n'\
+                '- { name: "PROXY", type: select, proxies: [ "😀故障切换","🚀手动选择","DIRECT"] }\n'\
+                '- { name: "ForeignMedia", type: select, proxies: ["PROXY","🚀手动选择"] }\n'\
+                '- { name: "DomesticMedia", type: select, proxies: ["DIRECT","PROXY","🚀手动选择"] }\n'\
+                '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
+                '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
+                '- { name: "Final", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
+                'Rule:\n'
+        return p_rule+Peoxies+ProxyGroup+l_rule       #回传配置
     except Exception as e:
-        print('getAllLinks Error:', e)
-
-
-def getAllNodes(url):  # 从ssr链接汇总得到所有节点信息
-    try:
-        allnodes = []
-        links = getAllLinks(url)
-        #print(links)
-        for ss in links:
-            #print(ss)
-            if len(ss) > 10:
-                link = ss.split('//')[1]
-                if ss.split(':')[0] == "ss":
-                    #print('ss')
-                    node = getNode(link)
-                    allnodes.append(node)
-                else:
-                    print('ssr')
-                    node = getNodeR(link)
-                    allnodes.append(node)        
-        return allnodes
-
-    except Exception as e:
-        print('getAllNodes Error:', e)
-
-
-
-def getNode(link):  # 从ss链接中得到节点信息
-    try:
-        info = decodeInfo(link)
-        method = info.split(':')[0]
-        pwd = info.split("@")[0].split(":")[1]
-        server = info.split("@")[1].split(":")[0]
-        port = info.split(':')[2]
-        remark = server
-        node = [remark, server, port, method, pwd]
-        return node
-    except Exception as e:
-        print('getNodeR Error:', e)
-
-def getNodeR(link):  # 从ssr链接中得到节点信息
-    try:
-        info = decodeInfo(link)
-        #print (info)
-        pwd = decodeInfo(info.split('/')[0].split(':')[-1]).split("'")[1]
-        server = info.split(':')[0].split("'")[1]
-        port = info.split(':')[1]
-        protocol = info.split(':')[2]
-        method = info.split(':')[3]
-        obfs = info.split(':')[4]
-        remark = getName(info.split('&')[2].split('=')[1]).rstrip()
-        obfsparam = getName(info.split('&')[0].split('=')[-1])
-        proparam = getName(info.split('&')[1].split('=')[1])
-        node = [remark, server, port, method, pwd, protocol, obfs, proparam,obfsparam]
-        print (node[0])
-        return node
-    
-    except Exception as e:
-        print('getNodeR Error:', e)
-
-
-
-
-def getName(info):  # 得到节点名称（有待合并）
-    lens = len(info)
-    # lenx = lens - (lens % 4 if lens % 4 else 4)
-    if lens % 4 == 1:
-        info = info + "==="
-    elif lens % 4 == 2:
-        info = info + "=="
-    elif lens % 4 == 3:
-        info = info + "="
-    result = base64.urlsafe_b64decode(info).decode('utf-8', errors='ignore')
-    return result
-
-
-
-
-def decodeInfo(info):  # 解码加密内容
-    lens = len(info)
-    if lens % 4 == 1:
-        info = info + "==="
-    elif lens % 4 == 2:
-        info = info + "=="
-    elif lens % 4 == 3:
-        info = info + "="
-    result = str(base64.urlsafe_b64decode(info))
-    return result
-
-
-def setNodes(nodes):  # 设置SSR节点
-    proxies = []
-    for node in nodes:
-        name = node[0]
-        server = node[1]
-        port = node[2]
-        cipher = node[3]
-        pwd = node[4]
-        protocol = node[5]
-        obfs = node[6]
-        proparam = node[7]
-        obparam = node[8]
-        proxy = "- { name: " +"\"" +str(name).strip() +"\""+ ", type: ssr, server: " +"\""+ str(server)+"\"" + ", port: " +"\""+ str(port)+"\"" +", password: " +"\""+ str(pwd)+"\""+ ", cipher: " +"\""+ str(cipher)+"\""+", protocol: "+"\""+ str(protocol)+"\""+", protocolparam: " +"\""+ str(proparam)+"\""+", obfs: "+"\"" + str(obfs)+"\""+", obfsparam: " +"\""+ str(obparam)+"\""+" }\n"
-        proxies.append(proxy)
-    proxies.insert(0, '\nProxy:\n')
-    return proxies
-
-
-def setPG(nodes):  # 设置策略组 auto,Fallback-auto,Proxy
-    proxy_names = []
-    for node in nodes:
-        proxy_names.append(node[0])
-
-    #auto = "- { name: \'延迟最低', type: url-test, proxies: " + str( proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
-    Fallback = "- { name: '故障切换', type: fallback, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
-    LoadBalance = "- { name: '负载均衡', type: load-balance, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"   
-    static = "- { name: '手动选择', type: select, proxies: " + str(proxy_names) + " }\n"
-    Proxy = "- { name: 'PROXY', type: select, proxies: " + " [\"故障切换\",\"负载均衡\",\"手动选择\",\"DIRECT\"] }" +"\n"  
-    Apple = "- { name: 'Apple', type: select, proxies: "+" [\"PROXY\",\"DIRECT\"] }" +"\n"
-    GlobalMedia = "- { name: 'ForeignMedia', type: select, proxies: "+" [\"PROXY\"] }" +"\n"
-    MainlandMedia = "- { name: 'DomesticMedia', type: select, proxies: "+" [\"DIRECT\"] }" +"\n"
-    RejectWeb =  "- { name: 'Hijacking', type: select, proxies: "+" [\"REJECT\",\"DIRECT\"] }"+"\n"
-    Final = "- { name: 'Final', type: select, proxies: "+ " [\"PROXY\",\"DIRECT\",\"REJECT\"] }\n" +"\n"+"\n"+"\n"+"\n"+"\n"  
-    Rule = "#规则"+"\n"+"Rule:"+"\n"
-    ProxyGroup = ['\nProxy Group:\n',Fallback,LoadBalance,static,Proxy,Apple,GlobalMedia,MainlandMedia,RejectWeb,Final,Rule]
-    return ProxyGroup
-
+            print('返回规则错误:',e)
 
 def getClash(nodes):  #写文件
-    print('\n\n\n应该会打印出节点名字，如果没有请检测\n\n\n')
-    print('正在写文件，此步出错大概率网络问题。重新运行脚本\n\n\n')
-    rules = getBasefile(
-        'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Clash/Pro.yaml')
-    gener = getBasefile(
-        'https://raw.githubusercontent.com/lzdnico/ToClash/master/General.yml')
+    
+    try:
 
-    with codecs.open("./config.yaml", "w",encoding = 'utf-8') as f:
-        f.writelines(gener)
 
-    info = setNodes(nodes) + setPG(nodes)
-    with codecs.open("./config.yaml", "a",encoding = 'utf-8') as f:
-        f.writelines(info)
+        with codecs.open('./config.yaml', "w",encoding = 'utf-8') as f:
+            f.writelines(nodes)
 
-    rule = rules.split('Rule:\n')[1]
-    with codecs.open("./config.yaml", "a",encoding = 'utf-8') as f:
-        f.writelines(rule)
-    print('生成成功，将同目录下config.yaml拖到软件中即可使用')
-
+    
+    except Exception as e:
+        print('main Error:', e)
 
 if __name__ == "__main__":
     try:
         url = ""         #替换订阅，不一定适用所有机场
-        nodes = getAllNodes(url)
-        getClash(nodes)
+        data = writeRules(url)
+        getClash(data)
+        input('任意键退出')
     except Exception as e:
         print('main Error:', e)
