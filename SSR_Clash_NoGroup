@@ -41,12 +41,28 @@ def writeRules(sublink): #写回配置
         l_rule =  rules.split('Rule:\n')[1]
         Peoxies = 'Proxy:\n'
         
-        for ssr in ssrdata:                                                   #节点组
-            
-            ssrlink=safe_base64_decode(ssr.replace('ssr://', ''))
-            config=re.split(':|&|=|/\?',ssrlink)
-            remark =safe_base64_decode(config[11])
 
+        remarkchoose = ''        #标志位，适配不同订阅模式
+        name =''                 #用于解决节点名字重复导致的问题
+
+        for ssr in ssrdata:                                                   #节点组
+            ssrlink=safe_base64_decode(ssr.replace('ssr://', ''))
+            #print(ssrlink)
+            config=re.split(':|&|=|/\?',ssrlink)
+            #print(len(config))
+             
+            
+            remark =safe_base64_decode(config[11])
+            if remark == remarkchoose:
+                remark = safe_base64_decode(config[-1])
+
+            remarkchoose = remark
+
+            
+            if remark in name:          #简单粗暴的解决一些机场节点名字重复的问题
+                continue
+            #name = remark             #占用空间小，可能会出错
+            name += remark               #占用空间大
 
             #接下来是给节点加图标的，需要深度自定义，可以全部删除
             if "30倍" in remark:
@@ -104,7 +120,7 @@ def getClash(nodes):  #写文件
 
 if __name__ == "__main__":
     try:
-        url = ""         #替换订阅，不一定适用所有机场
+        url = ""         
         data = writeRules(url)
         getClash(data)
         input('任意键退出')
