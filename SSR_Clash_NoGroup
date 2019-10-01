@@ -42,28 +42,34 @@ def writeRules(sublink): #写回配置
         Peoxies = 'Proxy:\n'
         
 
-        remarkchoose = ''        #标志位，适配不同订阅模式
-        name =''                 #用于解决节点名字重复导致的问题
-
-        for ssr in ssrdata:                                                   #节点组
-            ssrlink=safe_base64_decode(ssr.replace('ssr://', ''))
-            #print(ssrlink)
+        name =''
+        for i in range(len(ssrdata)):                                                   #节点组
+            
+            ssrlink=safe_base64_decode(ssrdata[i].replace('ssr://', ''))
             config=re.split(':|&|=|/\?',ssrlink)
-            #print(len(config))
-             
-            
-            remark =safe_base64_decode(config[11])
-            if remark == remarkchoose:
-                remark = safe_base64_decode(config[-1])
+            remark1 =safe_base64_decode(config[11])
 
-            remarkchoose = remark
 
-            
-            if remark in name:          #简单粗暴的解决一些机场节点名字重复的问题
+            # 匹配不同订阅格式
+            if i < len(ssrdata)-1:
+                ssrlink2=safe_base64_decode(ssrdata[i+1].replace('ssr://', ''))
+                config2=re.split(':|&|=|/\?',ssrlink2)
+                remark2 =safe_base64_decode(config2[11])
+
+            if remark1 == remark2:
+                remark =  safe_base64_decode(config[-1])
+            else :
+                remark = remark1
+            remark2 = remark1
+            # 匹配不同订阅格式结束
+
+            #简单粗暴的解决一些机场节点名字重复的问题
+            if remark in name:          
                 continue
-            #name = remark             #占用空间小，可能会出错
-            name += remark               #占用空间大
-
+            name += remark               #占用空间大，不会出错
+            #name = remark               #占用空间小一点，可能会出错
+            #简单粗暴的解决一些机场节点名字重复的问题结束
+            
             #接下来是给节点加图标的，需要深度自定义，可以全部删除
             if "30倍" in remark:
                 continue
@@ -81,8 +87,8 @@ def writeRules(sublink): #写回配置
                 remark = '🇨🇳 👉👉 🇨🇳' + remark
             #加图标到此结束
 
+            name += remark
             print(remark)
-
             pwd = safe_base64_decode(config[5])
             obfsparam=safe_base64_decode(config[7])
             protoparam =safe_base64_decode(config[9])          
@@ -91,7 +97,8 @@ def writeRules(sublink): #写回配置
             Peoxies +='- '+str(Json)+'\n'
             other.append(remark)
 
-                                                     #策略组
+
+             #策略组
         ProxyGroup='\n\nProxy Group:\n\n'\
                 '- { name: "😀故障切换", type: "fallback", "proxies": ' + str(other) + ', url: "http://www.gstatic.com/generate_204", interval: 300'+ '}\n\n\n'\
                 '- { name: "🚀手动选择", type: "select", "proxies": ' + str(other) + '}\n\n\n'\
@@ -105,6 +112,7 @@ def writeRules(sublink): #写回配置
         return p_rule+Peoxies+ProxyGroup+l_rule       #回传配置
     except Exception as e:
             print('返回规则错误:',e)
+
 
 def getClash(nodes):  #写文件
     
