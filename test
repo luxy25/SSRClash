@@ -186,10 +186,8 @@ def writeRules(sublink,flag):    #返回策略组及规则
 
 if __name__ == "__main__":
     try:
-        url = ""  
-        url2 =  ""      
-        writeRules(url,'timo')  #针对多家机场，第一参数为订阅地址，第二个参数为文件名。还需修改writerules里的参数，用了三行#做了标记
-        writeRules(url2,'stc')
+        url = ""       
+        writeRules(url,'stc')  #针对多家机场，第一参数为订阅地址，第二个参数为文件名。还需修改writerules里的参数，用了三行#做了标记
         print('成功')
     except Exception as e:
         print('main Error:', e)
