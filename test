@@ -80,13 +80,15 @@ def getrules():             # 自定义规则
     p_rule= Retry_request('https://raw.githubusercontent.com/lzdnico/ToClash/master/General.yml')               #基础规则_默认不配置DNS
     #p_rule=rules.split('Proxy:')[0]                                                                            #基础规则_默认配置DNS,与上面二选一
     l_rule =  rules.split('Rule:\n')[1].replace('ForeignMedia','国际媒体').replace('DomesticMedia','国内媒体').replace('Hijacking','恶意网站').replace('Final','漏网之鱼').replace('PROXY','代理模式')
+    nf_rule = l_rule.split('# > Netflix\n')[1].split('# > PBS\n')[0].replace('国际媒体','Netflix')
+    l_rule = nf_rule+l_rule
     Peoxies = 'Proxy:\n'
     finalrules.append(p_rule)
     finalrules.append(Peoxies)
     finalrules.append(l_rule)
     return finalrules
 
-def writeRules(sublink,flag):    #返回策略组及规则
+def writeRules(sublink,flag,username,id,gitname,gitpassword):    #返回策略组及规则
     try:
         other=[]
         name =''        
@@ -112,7 +114,6 @@ def writeRules(sublink,flag):    #返回策略组及规则
             
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
-            
             #接下来是给节点加图标的，需要深度自定义，默认不添加图标
             """
             if "香港" in remark:
@@ -127,11 +128,16 @@ def writeRules(sublink,flag):    #返回策略组及规则
                 remark = '🇨🇳 👉👉 🇯🇵' + remark
             if "深台" in remark  or "沪台" in remark  or "京台" in remark or "杭台" in remark:
                 remark = '🇨🇳 👉👉 🇨🇳' + remark
-            """
             #加图标到此结束
-
-            Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
-                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
+            """
+            if nodeR['protocol_param'] == '' and  nodeR['obfs_param'] == '':
+                if nodeR['method'] == 'none':
+                    continue
+                Json={ 'name': remark, 'type': 'ss', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
+                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'obfs': nodeR['obfs'] }
+            else:
+                Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
+                  'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
             #print(Json)
             Peoxies +='- '+str(Json)+'\n'
             other.append(remark)
@@ -144,6 +150,7 @@ def writeRules(sublink,flag):    #返回策略组及规则
                 '- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
                 '- { name: "故障切换", type: "fallback", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
                 '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
+                '- { name: "Netflix", type: select, proxies: ["代理模式","手动选择",'+proxy1+'] }\n'\
                 '- { name: "国际媒体", type: select, proxies: ["代理模式","手动选择",'+proxy1+'] }\n'\
                 '- { name: "国内媒体", type: select, proxies: ["DIRECT","代理模式","手动选择"] }\n'\
                 '- { name: "恶意网站", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
@@ -153,15 +160,9 @@ def writeRules(sublink,flag):    #返回策略组及规则
         rules = getrules()
         
         gistname = str(flag)
-        #修改content地址l例如：https://gist.githubusercontent.com/ssrclash/12345/raw/
-        #
-        #
-        content = "#!MANAGED-CONFIG https://gist.githubusercontent.com/usrname/id/raw/"+gistname+"\n"+rules[0]+rules[1]+Peoxies+ProxyGroup+rules[2]
-        #github账户名和密码
-        #
-        #
-        username=''
-        password=''
+        content = "#!MANAGED-CONFIG https://gist.githubusercontent.com/{userid}/{id1}/raw/".format(userid=username,id1=id)+gistname+"\n"+rules[0]+rules[1]+Peoxies+ProxyGroup+rules[2]
+        username= gitname
+        password= gitpassword
         payload ={
             "description": "Hello World Examples",
             "files": {
@@ -170,12 +171,8 @@ def writeRules(sublink,flag):    #返回策略组及规则
                 }
             }
         }
-        #gist库的id，浏览器的第一个Hash值，进行替换，要和content保持一致
-        #
-        #
-        id = ''
         auth=requests.auth.HTTPBasicAuth(username,password)
-        r = requests.patch(url="https://api.github.com/gists/{id}".format(id=id), data=json.dumps(payload), auth=auth)
+        r = requests.patch(url="https://api.github.com/gists/{id1}".format(id1=id), data=json.dumps(payload), auth=auth)
         print(r.json()['html_url'])        
         
 
@@ -187,8 +184,11 @@ if __name__ == "__main__":
     try:
         url = ""  
         #url2 =  ""      
-        writeRules(url,'stc')  #针对多家机场，第一参数为订阅地址，第二个参数为文件名。还需修改writerules里的参数，用了三行#做了标记
-        #writeRules(url2,'stc2')
+        #url3 = ''
+        writeRules(url,'stc','username','id','gitemail','gitpassword')  #填入，订阅地址，名称，github用户名，gistid,github邮箱，github密码
+        #writeRules(url2,'stc1','username','id','gitemail','gitpassword') #第二个参数不要一样
+        #writeRules(url3,'stc2','username','id','gitemail','gitpassword')
+        
         print('成功')
     except Exception as e:
         print('main Error:', e)
