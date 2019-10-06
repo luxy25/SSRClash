@@ -3,6 +3,7 @@ import  re
 import  requests
 import urllib3
 import json
+import time
 urllib3.disable_warnings()
 
 def safe_base64_decode(s): # 解码
@@ -160,7 +161,8 @@ def writeRules(sublink,flag,username,id,gitname,gitpassword):    #返回策略�
         rules = getrules()
         
         gistname = str(flag)
-        content = "#!MANAGED-CONFIG https://gist.githubusercontent.com/{userid}/{id1}/raw/".format(userid=username,id1=id)+gistname+"\n"+rules[0]+rules[1]+Peoxies+ProxyGroup+rules[2]
+        currenttime = '# 更新时间为（UTC时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n'
+        content = "#!MANAGED-CONFIG https://gist.githubusercontent.com/{userid}/{id1}/raw/".format(userid=username,id1=id)+gistname+"\n"+currenttime+rules[0]+rules[1]+Peoxies+ProxyGroup+rules[2]
         username= gitname
         password= gitpassword
         payload ={
@@ -185,9 +187,9 @@ if __name__ == "__main__":
         url = ""  
         #url2 =  ""      
         #url3 = ''
-        writeRules(url,'stc','username','id','gitemail','gitpassword')  #填入，订阅地址，名称，github用户名，gistid,github邮箱，github密码
-        #writeRules(url2,'stc1','username','id','gitemail','gitpassword') #第二个参数不要一样
-        #writeRules(url3,'stc2','username','id','gitemail','gitpassword')
+        writeRules(url,'stc','usrname','id','githubemail','githubpwd')
+        #writeRules(url2,'stc1','usrname','id','githubemail','githubpwd')
+        #writeRules(url3,'stc2','usrname','id','githubemail','githubpwd')
         
         print('成功')
     except Exception as e:
