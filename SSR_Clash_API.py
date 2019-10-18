@@ -301,7 +301,7 @@ def my():
     #requests.post('https://api.telegram.org/bot/sendMessage?chat_id=&text=有傻吊调用了你的API')     ###可用这行代码给bot发消息
     return 'STC API 使用教程：<br/><br/>'\
         '假设你的订阅地址为：https://stc-dns.com/link/Mzke <br/><br/>'\
-        '修改Clash托管地址为：http://185.238.248.145:10086/https:!!stc-dns.com!link!Mzke <br/><br/>' \
+        '修改Clash托管地址为：http://ip:10086/https:!!stc-dns.com!link!Mzke <br/><br/>' \
         'PS: 把SSR订阅地址中的   /   改为   ！ <br/><br/><br/> '\
         'API的使用以及更多功能请参考群文件：API功能<br/><br/>' \
         'Kris is the best.'
