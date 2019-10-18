@@ -16,11 +16,11 @@ ToClash 项目 Clash Bing 神机规则
 高级：建议使用SSR_Clash_HttpServer。此版解码方法优化，支持大多数机场。不需要修改代码，运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
 
 
-服务器远程订阅：建议使用SSR_Clash_API。部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
+API：建议使用SSR_Clash_API。部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
 
 API调用方式：
 
-功能1：
+API功能1：
 SSR订阅到Clash
 
 调用：
@@ -33,7 +33,7 @@ SSR订阅到Clash
 
 1.默认故障切换在前，如果你想让手动切换在前在最后加上@@yes
 
-功能2：
+API功能2：
 客制化纯SSR订阅，不是Clash订阅
 
 调用：
@@ -51,7 +51,7 @@ http://ip:10086/ssr/https:!!stc-dns.com!link!Mzke@香港@美国
 更新：
 1.假设你只想要香港1倍节点和杭港5倍节点，为@香港&1倍@杭港&5倍
 
-功能3：
+API功能3：
 客制化SSR_Clash订阅
 
 调用：
