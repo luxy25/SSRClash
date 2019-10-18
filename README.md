@@ -18,8 +18,8 @@ ToClash 项目 Clash Bing 神机规则
 
 服务器远程订阅：建议使用SSR_Clash_API。部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
 
+API调用方式：
 
-调用方式：
 功能1：
 SSR订阅到Clash
 调用：
