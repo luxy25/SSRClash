@@ -22,31 +22,49 @@ API调用方式：
 
 功能1：
 SSR订阅到Clash
+
 调用：
+
 假设你的订阅地址为：https://stc-dns.com/link/Mzke     
+
 最终地址为：http://ip:10086/https:!!stc-dns.com!link!Mzke
+
 更新：
+
 1.默认故障切换在前，如果你想让手动切换在前在最后加上@@yes
 
 功能2：
 客制化纯SSR订阅，不是Clash订阅
+
 调用：
+
 假设你的订阅地址为https://stc-dns.com/link/Mzke    
+
 假设你只想要香港和杭港节点，加上@香港@美国
+
 最终地址为：
+
 http://ip:10086/ssr/https:!!stc-dns.com!link!Mzke@香港@美国
+
 说明：如果报错，说明你的客户端不支持中文URL，先URL_Encode一下（Google）
-	更新：
+
+更新：
 1.假设你只想要香港1倍节点和杭港5倍节点，为@香港&1倍@杭港&5倍
 
 功能3：
 客制化SSR_Clash订阅
+
 调用：
+
 假设你的订阅地址为https://stc-dns.com/link/Mzke    
+
 假设你只想要香港和杭港节点，加上@香港@美国
+
 最终地址为：
+
 http://ip:10086/https:!!stc-dns.com!link!Mzke@香港@美国
 说明：如果报错，说明你的客户端不支持中文URL，先URL_Encode一下（Google）
+
 更新：
 1.假设你只想要香港1倍节点和杭港5倍节点，为@香港&1倍@杭港&5倍
 2.默认故障切换在前，如果你想让手动切换在前在最后加上@@yes
