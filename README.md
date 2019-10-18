@@ -14,9 +14,8 @@ ToClash 项目 Clash Bing 神机规则
 
 
 高级：建议使用SSR_Clash_HttpServer。此版解码方法优化，支持大多数机场。不需要修改代码，运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
-
-
 服务器远程订阅：建议使用SSR_Clash_API。部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
+
 调用方式：
 功能1：
 SSR订阅到Clash
