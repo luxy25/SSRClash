@@ -37,7 +37,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def my():
-    return 'STC API 使用教程：<br/><br/>'
+    return 'qx api 使用：调用地址为：http://ip/2333/订阅地址@tag。其中订阅地址中的/替换为!，tag为标签'
 
 @app.route('/<name>',methods=['GET'])
 def get(name):
