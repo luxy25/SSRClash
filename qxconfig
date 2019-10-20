@@ -42,6 +42,7 @@ available=Instagram, 中转,IPLC,BGP,长按策略图标, 然后删除无用节�
 static=机场专线, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/rocket.png
 round-robin=Pornhub, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Pornhub.png
 available=Google, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Google.png
+available=CN, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/China-map.png
 static=😁 网易云解锁, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
