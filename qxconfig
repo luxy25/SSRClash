@@ -1,4 +1,3 @@
-#!MANAGED-CONFIG https://gist.githubusercontent.com/lzdnico/e637def04eafa005e64cc1897509799e/raw/QuantumultX
 [general]
 server_check_url= http://www.qualcomm.cn/generate_204
 ;geo_location_checker=http://extreme-ip-lookup.com/json/, https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample-location-with-script.js
