@@ -1,31 +1,47 @@
+#!MANAGED-CONFIG https://gist.githubusercontent.com/lzdnico/e637def04eafa005e64cc1897509799e/raw/QuantumultX
 [general]
-;server_check_url=http://www.google.com/generate_204
-;geo_location_checker=http://www.example.com/json/, https://www.example.com/script.js
-;dns_exclusion_list=*.qq.com, qq.com, *.cmpassport.com
+server_check_url= http://www.qualcomm.cn/generate_204
+;geo_location_checker=http://extreme-ip-lookup.com/json/, https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample-location-with-script.js
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/IP_API.js
+;network_check_url=http://bing.com/
+;dns_exclusion_list=*.qq.com, qq.com
 ;ssid_suspended_list=LINK_22E174, LINK_22E175
 ;udp_whitelist=53, 123, 1900, 80-443
 ;excluded_routes= 192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8
 ;icmp_auto_reply=true
-
-#
-# The DNS servers fetched from current network will always be used for better performance.
-# The result of query will only be used for evaluating filter or connecting through direct policy, when connecting through server the result will not be used and Quantumult will never know the destination IP of related domain.
-# Specially directly set 127.0.0.1 for a domain is not allowed in here. if you want some domain(eg: example.com) to be 127.0.0.1, just add “host, example.com, reject” to the “filter_local” section. The reject action will return DNS response with 127.0.0.1 to the query.
-#
 [dns]
-server=223.5.5.5
 server=114.114.114.114
-server=119.29.29.29
-server=8.8.8.8
-;server=8.8.4.4:53
-;server=/example0.com/system
+server=202.141.176.93 
+server=202.141.178.13
+server=117.50.10.10
+server=223.5.5.5
+server=119.29.29.29:53
+server=119.28.28.28
+server=/*.taobao.com/223.5.5.5
+server=/*.tmall.com/223.5.5.5
+server=/*.alipay.com/223.5.5.5
+server=/*.alicdn.com/223.5.5.5
+server=/*.aliyun.com/223.5.5.5
+server=/*.jd.com/119.28.28.28
+server=/*.qq.com/119.28.28.28
+server=/*.tencent.com/119.28.28.28
+server=/*.weixin.com/119.28.28.28
+server=/*.bilibili.com/119.29.29.29
+server=/hdslb.com/119.29.29.29
+server=/*.163.com/119.29.29.29
+server=/*.126.com/119.29.29.29
+server=/*.126.net/119.29.29.29
+server=/*.127.net/119.29.29.29
+server=/*.netease.com/119.29.29.29
+server=/*.mi.com/119.29.29.29
+server=/*.xiaomi.com/119.29.29.29
+;server=/*testflight.apple.com/23.76.66.98
+;server=8.8.8.8
 ;server=/example1.com/8.8.4.4
 ;server=/*.example2.com/223.5.5.5
 ;server=/example4.com/[2001:4860:4860::8888]:53
 ;address=/example5.com/192.168.16.18
 ;address=/example6.com/[2001:8d3:8d3:8d3:8d3:8d3:8d3:8d3]
-
-
 #
 # static policy points to the server in candidates you manually selected.
 # available policy points to the first available server in candidates based on server_check_url(concurrent url latency test will be immediately launched when the policy has been triggered and the policy result is unavailable).
@@ -33,28 +49,20 @@ server=8.8.8.8
 # ssid policy points to the server depending on the network environment.
 #
 [policy]
-# available 为健康检查模式，round-robin 为负载均衡模式，static 为静态策略模式，可以通过把 available 改为 static 的方式切换至静态策略模式，其他同理；
-available=中转, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/PCCW.png
-available=IPLC, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
-available=BGP, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
-available=ACG, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
-available=Instagram,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/ins.png
-static=机场专线, p长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/rocket.png
-round-robin=Pornhub, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Pornhub.png
-available=Google,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Google.png
-available=CN, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/China-map.png
+available=❤ Auto健康检查, 长按策略图标, 然后删除带红色感叹号的节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/United_States.png
+available=🐷 Auto健康检查,长按策略图标, 然后删除带红色感叹号的节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
 static=😁 网易云解锁, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
-static=🎬 YouTube, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
-static=📺 Netflix, proxy, direct,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
-static=💻 国外影视, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
+static=🎬 YouTube, 🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+static=📺 Netflix, V4 香港 02 DMIT商家优化 1倍, V4 香港 03 DMIT商家优化 1倍, V4 香港 04 DMIT商家优化 1倍, V4 香港 05 DMIT商家优化 1倍, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
+static=💻 国外影视, 🐷 Auto健康检查, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
 static=⏱ Speedtest, direct, proxy,img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
-static=🛀 Telegram, direct, proxy,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
-available=Twitter, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Twitter.png
-static=🌏 国外网站, proxy, direct,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
-static=🕹 黑/白名单, direct, proxy,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
-;static=policy-name-1, Sample-A, Sample-B, Sample-C, img-url=http://example.com/icon.png
+static=🛀 Telegram, ❤ Auto健康检查,🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
+static=🌏 国外网站, 🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
+static=🕹 黑/白名单, 🐷 Auto健康检查, direct, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
+
+;static=policy-name-1, Sample-A, Sample-B, Sample-C
 ;available=policy-name-2, Sample-A, Sample-B, Sample-C
 ;round-robin=policy-name-3, Sample-A, Sample-B, Sample-C
 ;ssid=policy-name-4, Sample-A, Sample-B, LINK_22E171:Sample-B, LINK_22E172:Sample-C
@@ -63,30 +71,18 @@ static=🕹 黑/白名单, direct, proxy,  img-url=https://raw.githubusercontent
 # Params “tag” and “enabled” are optional.
 # The default sync interval for all kinds of remote resources is 24*60*60 seconds.
 #
-
 [server_remote]
-
 # 在[server_remote] 下方粘贴你的订阅链接
 
-#
-# Params “tag”, “force-policy” and “enabled” are optional.
-# When there is a force-policy, then the policy in filter of remote resource will be ignored and the force-policy will be used.
-#
 [filter_remote]
+
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Unbreak.list, tag=Unbreak, enabled=true
-https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Hijacking.list, tag=🚫 运营商劫持, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Advertising.list, tag=🚦去广告, enabled=true
-https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/AdRuleTest.list, tag=Adrules +, force-policy=reject, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/limbopro/QuantumultX.list, tag=机场专线, force-policy=机场专线, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Pornhub.list, tag=Pornhub, force-policy=proxy, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Google.list, tag=Google, force-policy=Google, enabled=true
-https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/AdRule.list, tag=Adrules, force-policy=reject, enabled=true
 https://pan.jiaowoy.top/Share/Rules/Quantumult%20X/NeteaseMusic.list, tag=网易云解锁,force-policy=😁 网易云解锁, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Bilibili.list, tag=哔哩哔哩弹幕视频, force-policy=direct, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Hijacking.list, tag=🚫 运营商劫持, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/DomesticMedia.list, force-policy=📽 国内视频, tag=📽 国内视频, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/Netflix.list, tag=📺 Netflix, force-policy=📺 Netflix, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/YouTube.list, tag=🎬 YouTube, force-policy=🎬 YouTube, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Bahamut.list, tag=巴姆雷特, force-policy=ACG, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/ForeignMedia.list, tag=💻 国外影视,force-policy= 💻 国外影视, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Speedtest.list, tag=SpeedTest, force-policy=  ⏱ Speedtest,enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Telegram.list, tag=Telegram, force-policy= 🛀 Telegram,enabled = true
@@ -94,87 +90,37 @@ https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Apple.list, tag= Apple服务, force-policy=🍎 苹果服务,enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/China.list, tag=🐼 国内网站, enabled=true
 
-#
-# Params “tag” and “enabled” are optional.
-#
 [rewrite_remote]
-https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Rewrite_lhie1.conf, tag=Line1, enabled=true
-https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Js.conf, tag=NobyDa, enabled=true
-;https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample-import-rewrite.txt, tag=Sample, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Js.conf, tag=脚本订阅, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Rewrite.conf, tag=神机复写规则, enabled=true
+http://cloudcompute.lbyczf.com/quanx-rewrite, tag=lhie1复写, enabled=true
 
-#
-# Only obfs=http, obfs=ws, obfs=wss can have optional “obfs-uri” field.
-# When using obfs=ws and obfs=wss the server side can be deployed by v2ray-plugin with mux = 0 or by v2ray-core.
-#
 [server_local]
 shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, server_check_url=http://www.apple.com/generate_204, tag=长按策略图标
 shadowsocks=ss-b.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=然后删除无用节点
-;shadowsocks=ss-c.example.com:443, method=chacha20, password=pwd, obfs=tls, obfs-host=bing.com, fast-open=false, udp-relay=false, tag=Sample-C
-;shadowsocks=ssr-a.example.com:443, method=chacha20, password=pwd, ssr-protocol=auth_chain_b, ssr-protocol-param=def, obfs=tls1.2_ticket_fastauth, obfs-host=bing.com, tag=Sample-D
-;shadowsocks=ws-a.example.com:80, method=aes-128-gcm, password=pwd, obfs=ws, obfs-uri=/ws, fast-open=false, udp-relay=false, tag=Sample-E
-;shadowsocks=ws-b.example.com:80, method=aes-128-gcm, password=pwd, obfs=ws, fast-open=false, udp-relay=false, tag=Sample-F
-;shadowsocks=ws-tls-a.example.com:443, method=aes-128-gcm, password=pwd, obfs=wss, obfs-uri=/ws, fast-open=false, udp-relay=false, tag=Sample-G
+
 
 [filter_local]
-host-keyword, fbcdn, Twitter
-host-keyword, twitter, Twitter
-host-keyword, twimig, Twitter
-host-keyword, instagram, Instagram
-host-keyword, baidu, CN
-host-keyword, cdninstagram, Instagram
-host-keyword, send-anywhere, proxy
-geoip, cn, direct
 ;user-agent, ?abc*, proxy
 ;host, www.google.com, proxy
 ;host-keyword, adsite, reject
-;host-suffix, googleapis.com, proxy
+;host, googleapis.com, proxy
 ip-cidr, 10.0.0.0/8, direct
 ip-cidr, 127.0.0.0/8, direct
 ip-cidr, 172.16.0.0/12, direct
 ip-cidr, 192.168.0.0/16, direct
 ip-cidr, 224.0.0.0/24, direct
-final, proxy
+ip-cidr, 185.238.248.0/24, direct
+ip-cidr, 39.107.240.0/24, direct
 
-#
-# The “reject” returns HTTP status code 404 with no content.
-# The “reject-200” returns HTTP status code 200 with no content.
-# The “reject-img” returns HTTP status code 200 with content of 1px gif.
-# The “reject-dict” returns HTTP status code 200 with content of empty json object.
-# The “reject-array” returns HTTP status code 200 with content of empty json array.
-# The “request-header” works for all the http headers not just one single header, so you can match two or more headers including CRLF in one regular expression.
-# The length and encoding related HTTP header fields will be automatically processed by Quantumult if the “rewrite” is body related, so you should not handle them by yourself. The max supported response size is 256kB(decompressed) for response-body and script-response-body.
-# When using javascript in rewrite, you can use those objects: $request, $response, $notify(title, subtitle, message), console.log(message) and Quantumult’s built-in objects all have prefix “$”.
-# Supports: $request.scheme, $request.method, $request.url, $request.path, $request.headers, $response.statusCode, $response.headers, $response.body
-# The $notify(title, subtitle, message) will post iOS notifications if Quantumult notification has been enabled.
-# The console.log(message)  will output logs to Quantumult log file if the log level is “debug”.
-#
+geoip, cn, direct
+final, 🕹 黑/白名单
 [rewrite_local]
-#91
-^https?:\/\/.+\.my10api\.com url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/91.js
-
-(?<=(carrier|account|sys)_region=)CN url 307 KR
-#VSCO
-^https?:\/\/vsco\.co\/api\/subscriptions\/2.1\/user-subscriptions\/\d{1,} url 302 https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/VSCO
-
-#Termius
-https:\/\/api\.termius\.com\/api\/v3\/bulk\/account\/ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Termius.js
-
-;^http://example\.com/resource1/1/ url reject
-;^http://example\.com/resource1/2/ url reject-img
-;^http://example\.com/resource1/3/ url reject-200
-;^http://example\.com/resource1/4/ url reject-dict
-;^http://example\.com/resource1/5/ url reject-array
-;^http://example\.com/resource2/ url 302 http://example.com/new-resource2/
-;^http://example\.com/resource3/ url 307 http://example.com/new-resource3/
-;^http://example\.com/resource4/ url request-header (\r\n)User-Agent:.+(\r\n) request-header $1User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36$2
-;^http://example\.com/resource5/ url response-body “info”:\[.+\],”others” response-body “info”:[],”others”
-;^http://example\.com/resource6/ url script-response-body https://example.com/script.js
 
 [mitm]
-;passphrase = 4719848D
-;p12 = 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
-;passphrase =
-;p12 =
 ;skip_validating_cert = false
 ;force_sni_domain_name = false
-hostname = *.example.com, *.sample.com, vsco.co, *.my10api.com, *googlevideo.com, api.termius.com
+;hostname = *.example.com, *.sample.com
+hostname = *.googlevideo.com
+passphrase = 4B676386
+p12 = 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
