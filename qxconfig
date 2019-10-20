@@ -54,7 +54,7 @@ static=😁 网易云解锁, direct, img-url=https://raw.githubusercontent.com/z
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
 static=🎬 YouTube, 🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
-static=📺 Netflix, V4 香港 02 DMIT商家优化 1倍, V4 香港 03 DMIT商家优化 1倍, V4 香港 04 DMIT商家优化 1倍, V4 香港 05 DMIT商家优化 1倍, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
+static=📺 Netflix, 长按策略图标, 然后删除带红色感叹号的节点, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
 static=💻 国外影视, 🐷 Auto健康检查, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
 static=⏱ Speedtest, direct, proxy,img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
 static=🛀 Telegram, ❤ Auto健康检查,🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
