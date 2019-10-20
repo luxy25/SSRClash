@@ -50,7 +50,7 @@ server=/*.xiaomi.com/119.29.29.29
 [policy]
 available=❤ Auto健康检查, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/United_States.png
 available=🐷 Auto健康检查,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
-static=😁 网易云解锁, direct,网易云解锁， img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
+static=😁 网易云解锁, direct,网易云解锁, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
 static=🎬 YouTube, ❤ Auto健康检查, 🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
