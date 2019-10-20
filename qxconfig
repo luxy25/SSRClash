@@ -42,17 +42,17 @@ available=Instagram, 中转,IPLC,BGP,长按策略图标, 然后删除无用节�
 static=机场专线, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/rocket.png
 round-robin=Pornhub, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Pornhub.png
 available=Google, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Google.png
-static=😁 网易云解锁, 阿里云,Unlock, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
+static=😁 网易云解锁, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
-static=🎬 YouTube, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
-static=📺 Netflix, proxy, direct, V4 沪港 01 CMHK阿里中转 1倍, V4 沪港 02 PCCW阿里中转 1倍, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
-static=💻 国外影视, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
+static=🎬 YouTube, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+static=📺 Netflix, proxy, direct,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
+static=💻 国外影视, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
 static=⏱ Speedtest, direct, proxy,img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
-static=🛀 Telegram, direct, proxy, 香港🇭🇰Auto, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
+static=🛀 Telegram, direct, proxy,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
 available=Twitter, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Twitter.png
-static=🌏 国外网站, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
-static=🕹 黑/白名单, direct, proxy, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
+static=🌏 国外网站, proxy, direct,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
+static=🕹 黑/白名单, direct, proxy,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
 ;static=policy-name-1, Sample-A, Sample-B, Sample-C, img-url=http://example.com/icon.png
 ;available=policy-name-2, Sample-A, Sample-B, Sample-C
 ;round-robin=policy-name-3, Sample-A, Sample-B, Sample-C
