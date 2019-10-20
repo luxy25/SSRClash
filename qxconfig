@@ -1,22 +1,3 @@
-# Sample Quantumult Configuration
-#
-# Line started with “;” or “#” or “//“ shall be comments.
-# 以 “;” 或 “#” 或 “//“ 开头的行为注释行。
-#
-# SS-URI scheme can be found at https://shadowsocks.org/en/spec/SIP002-URI-Scheme.html
-#
-# Quantumult uses HEAD method send HTTP request to the server_check_url to test the proxy’s status, the results should be two latencies, the first one is TCP handshake to the proxy server, the second one is the total time that Quantumult successfully received the HTTP response from the server_check_url. The lightning icon means that the TCP fast open is successful. If the server in section [server_local] or section [server_remote] has its own server_check_url, its own server_check_url will be used instead of the server_check_url in section [general].
-#
-# Quantumult 使用 HTTP HEAD 方法对测试网址（server_check_url）进行网页响应性测试（测试结果为通过该节点访问此网页获得响应所需要的时间），来确认节点的可用性。
-# Quantumult 界面中的延迟测试方式均为网页响应性测试，显示的最终延迟均为通过对应节点访问测试网页获得响应所需要时间。
-#
-# The dns_exclusion_list contains the domains that disabled the placeholder IP(240.*), domains that are not in the dns_exclusion_list all have placeholder IP enabled and have turned on the resolve-on-remote setting.
-#
-# The udp_whitelist contains the destination UDP port, empty means all the ports are in udp_whitelist. UDP packtes(through Quantumult tunnel interface) with destination ports that are not in the udp_whitelist will be dropped. This setting has nothing to do with the policy and has nothing to do with the proxy(server) port either.
-#
-# The traffic to excluded_routes will not be handled by Quantumult. It is better to reboot your device after modification.
-#
-
 [general]
 ;server_check_url=http://www.google.com/generate_204
 ;geo_location_checker=http://www.example.com/json/, https://www.example.com/script.js
@@ -52,28 +33,25 @@ server=8.8.8.8
 # ssid policy points to the server depending on the network environment.
 #
 [policy]
-available=Twitter, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Twitter.png
 # available 为健康检查模式，round-robin 为负载均衡模式，static 为静态策略模式，可以通过把 available 改为 static 的方式切换至静态策略模式，其他同理；
-
-available=ACG, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
-
-available=CN, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/China-map.png
-
-available=Instagram, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/ins.png
-
-static=机场专线, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/rocket.png
-# 机场专线下域名为大部分机场域名，分流预设置为走PROXY，本设置是为了减少机场域名被墙而导致无法访问；
-
-round-robin=Pornhub, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Pornhub.png
-
-available=Google, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Google.png
-
-round-robin=Youtube, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/YouTube_Letter.png
-
-available=Telegram, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Telegram.png
-
-round-robin=Netflix, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Netflix_Letter.png
-
+available=中转, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/PCCW.png
+available=IPLC, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
+available=BGP, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
+available=ACG, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
+available=Instagram, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/ins.png
+static=机场专线, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/rocket.png
+round-robin=Pornhub, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Pornhub.png
+available=Google, 中转,IPLC,BGP,长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Google.png
+static=😁 网易云解锁, 阿里云,Unlock, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
+static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
+static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
+static=🎬 YouTube, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+static=📺 Netflix, proxy, direct, V4 沪港 01 CMHK阿里中转 1倍, V4 沪港 02 PCCW阿里中转 1倍, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
+static=💻 国外影视, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
+static=⏱ Speedtest, direct, proxy,img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
+static=🛀 Telegram, direct, proxy, 香港🇭🇰Auto, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
+static=🌏 国外网站, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
+static=🕹 黑/白名单, direct, proxy, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
 ;static=policy-name-1, Sample-A, Sample-B, Sample-C, img-url=http://example.com/icon.png
 ;available=policy-name-2, Sample-A, Sample-B, Sample-C
 ;round-robin=policy-name-3, Sample-A, Sample-B, Sample-C
@@ -93,17 +71,26 @@ round-robin=Netflix, 长按策略图标, 然后删除无用节点, img-url=https
 # When there is a force-policy, then the policy in filter of remote resource will be ignored and the force-policy will be used.
 #
 [filter_remote]
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Bilibili.list, tag=哔哩哔哩弹幕视频, force-policy=direct, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Bahamut.list, tag=巴姆雷特, force-policy=ACG, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Unbreak.list, tag=Unbreak, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Hijacking.list, tag=🚫 运营商劫持, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Advertising.list, tag=🚦去广告, enabled=true
+https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/AdRuleTest.list, tag=Adrules +, force-policy=reject, enabled=true
 https://raw.githubusercontent.com/limbopro/Profiles/master/limbopro/QuantumultX.list, tag=机场专线, force-policy=机场专线, enabled=true
 https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Pornhub.list, tag=Pornhub, force-policy=proxy, enabled=true
 https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Google.list, tag=Google, force-policy=Google, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/YouTube.list, tag=Youtube, force-policy=Youtube, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Telegram.list, tag=Telegram, force-policy=Telegram, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Netflix.list, tag=Netflix, force-policy=Netflix, enabled=true
-https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/AdRuleTest.list, tag=Adrules +, force-policy=reject, enabled=true
 https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/AdRule.list, tag=Adrules, force-policy=reject, enabled=true
-;https://raw.githubusercontent.com/crossutility/Quantumult-X/master/filter.txt, tag=Sample, force-policy=your-policy-name, enabled=true
+https://pan.jiaowoy.top/Share/Rules/Quantumult%20X/NeteaseMusic.list, tag=网易云解锁,force-policy=😁 网易云解锁, enabled=true
+https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Bilibili.list, tag=哔哩哔哩弹幕视频, force-policy=direct, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/DomesticMedia.list, force-policy=📽 国内视频, tag=📽 国内视频, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/Netflix.list, tag=📺 Netflix, force-policy=📺 Netflix, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/YouTube.list, tag=🎬 YouTube, force-policy=🎬 YouTube, enabled=true
+https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Bahamut.list, tag=巴姆雷特, force-policy=ACG, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/ForeignMedia.list, tag=💻 国外影视,force-policy= 💻 国外影视, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Speedtest.list, tag=SpeedTest, force-policy=  ⏱ Speedtest,enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Telegram.list, tag=Telegram, force-policy= 🛀 Telegram,enabled = true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Global.list, tag=🌍 国外网站, force-policy= 🌏 国外网站, enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Apple.list, tag= Apple服务, force-policy=🍎 苹果服务,enabled=true
+https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/China.list, tag=🐼 国内网站, enabled=true
 
 #
 # Params “tag” and “enabled” are optional.
