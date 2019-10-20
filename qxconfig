@@ -50,6 +50,7 @@ static=📺 Netflix, proxy, direct, V4 沪港 01 CMHK阿里中转 1倍, V4 沪�
 static=💻 国外影视, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
 static=⏱ Speedtest, direct, proxy,img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
 static=🛀 Telegram, direct, proxy, 香港🇭🇰Auto, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
+available=Twitter, 长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Twitter.png
 static=🌏 国外网站, proxy, direct, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
 static=🕹 黑/白名单, direct, proxy, 香港🇭🇰Auto, 🇭🇰中转, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
 ;static=policy-name-1, Sample-A, Sample-B, Sample-C, img-url=http://example.com/icon.png
