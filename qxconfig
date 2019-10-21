@@ -48,17 +48,17 @@ server=/*.xiaomi.com/119.29.29.29
 # ssid policy points to the server depending on the network environment.
 #
 [policy]
-available=❤ Auto健康检查, 健康检测长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/United_States.png
-available=🐷 Auto健康检查,健康检测长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
+available=❤ Auto健康检查, 长按策略图标-默认故障切换, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/United_States.png
+available=🐷 Auto健康检查,长按策略图标-默认故障切换, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
 static=😁 网易云解锁, direct,网易云解锁, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=📽 国内视频, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/DomesticMedia.png
-available=📺 动画疯, 健康检测长按策略图标, 然后删除无用节点, PROXY, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
-available=🎬 YouTube, 健康检测长按策略图标, 然后删除无用节点, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
-static=📺 Netflix, proxy,手动选择长按策略图标, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
-available=💻 国外影视, 健康检测长按策略图标, 然后删除无用节点, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
+available=📺 动画疯, 长按策略图标-默认故障切换, 然后删除无用节点, PROXY, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
+available=🎬 YouTube, 长按策略图标-默认故障切换, 然后删除无用节点, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+static=📺 Netflix, proxy,长按策略图标-默认手动选择, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
+available=💻 国外影视, 长按策略图标-默认故障切换, 然后删除无用节点, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
 static=⏱ Speedtest, direct, proxy,img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
-available=🛀 Telegram, 健康检测长按策略图标, 然后删除无用节点, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
+available=🛀 Telegram, 长按策略图标-默认故障切换, 然后删除无用节点, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
 static=🌏 国外网站, ❤ Auto健康检查,🐷 Auto健康检查, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
 static=🕹 黑/白名单, ❤ Auto健康检查,🐷 Auto健康检查, direct, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
 
@@ -80,10 +80,10 @@ https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Advertising.list, tag=🚦去广告, enabled=true
 https://pan.jiaowoy.top/Share/Rules/Quantumult%20X/NeteaseMusic.list, tag=网易云解锁,force-policy=😁 网易云解锁, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Hijacking.list, tag=🚫 运营商劫持, enabled=true
+https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Bahamut.list, tag=📺 动画疯, force-policy=📺 动画疯, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/DomesticMedia.list, force-policy=📽 国内视频, tag=📽 国内视频, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/Netflix.list, tag=📺 Netflix, force-policy=📺 Netflix, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/YouTube.list, tag=🎬 YouTube, force-policy=🎬 YouTube, enabled=true
-https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Bahamut.list, tag=📺 动画疯, force-policy=📺 动画疯, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/ForeignMedia.list, tag=💻 国外影视,force-policy= 💻 国外影视, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Speedtest.list, tag=SpeedTest, force-policy=  ⏱ Speedtest,enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Telegram.list, tag=Telegram, force-policy= 🛀 Telegram,enabled = true
@@ -96,8 +96,8 @@ https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Js.conf, tag=
 https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/Rewrite_lhie1.conf, tag=Line1, enabled=true
 
 [server_local]
-shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=健康检测长按策略图标
-shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=手动选择长按策略图标
+shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按策略图标-默认故障切换
+shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按策略图标-默认手动选择
 shadowsocks=ss-b.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=然后删除无用节点
 shadowsocks=ss-b.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=网易云解锁
 
