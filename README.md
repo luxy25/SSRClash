@@ -11,9 +11,13 @@
 
 # 功能介绍
 
-  - 初级：建议使用SSR_CLash_NoGroup，没有节点分组，默认不配置DNS。不再更新
-  - 高级：建议使用SSR_Clash_HttpServer。此版解码方法优化，支持大多数机场。不需要修改代码，运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
-  - 服务器：建议使用SSR_Clash_API。部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
+  - 初级：建议使用SSR_CLash_NoGroup <br/>
+    没有节点分组，默认不配置DNS。不再更新
+  - 高级：建议使用SSR_Clash_HttpServer  <br/>
+    此版解码方法优化，支持大多数机场。 <br/>
+    运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
+  - 服务器：建议使用SSR_Clash_API。 <br/>
+   部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
 
 
    API调用方式:
