@@ -11,16 +11,17 @@
 
 # 功能介绍
 
-  - 初级：建议使用SSR_CLash_NoGroup <br/>
+  - 初级：建议使用SSR_CLash_NoGroup.py <br/>
     没有节点分组，默认不配置DNS。不再更新
-  - 高级：建议使用SSR_Clash_HttpServer  <br/>
+  - 高级：建议使用SSR_Clash_HttpServer.py  <br/>
     此版解码方法优化，支持大多数机场。 <br/>
     运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
-  - 服务器：建议使用SSR_Clash_API。 <br/>
+  - CLashAPI：建议使用SSR_Clash_API.py。 <br/>
    部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
+  - QuantumultAPI：建议使用qx.py。 <br/>
+   部署在VPS上，需要python3环境。
 
-
-   API调用方式:
+   CLashAPI调用方式:
   - SSR订阅到Clash <br/>
    调用地址为：http://ip:10086/订阅地址  <br/>
    其中订阅地址中的/替换为！ <br/>
@@ -36,7 +37,11 @@
    其中订阅地址中的/替换为！  <br/>
    假设只想要香港和杭港节点，加上@香港@美国 <br/>
    假设只想要香港1倍节点和杭港5倍节点，为@香港&1倍@杭港&5倍 默认故障切换在前，如果你想让手动切换在前在最后加上@@yes <br/>
-   说明：如果报错，说明你的客户端不支持中文URL，先URL_Encode一下（Google）
+   说明：如果报错，说明你的客户端不支持中文URL，先URL_Encode一下（Google）<br/>
+   QuantumultAPI调用方式:
+   - http://ip:2333/订阅地址1@标签1@@订阅地址2@标签2 <br/>
+    其中订阅地址中的/替换为！ <br/>
+    标签可不填写，默认标签为傻吊家的节点
 
 # 联系我
    - https://t.me/NicoNewBeee
