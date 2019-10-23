@@ -20,6 +20,8 @@
    部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
   - QuantumultAPI：建议使用qx.py。 <br/>
    部署在VPS上，需要python3环境。
+   screen 后台 
+   python3 api.py
 
    CLashAPI调用方式:
   - SSR订阅到Clash <br/>
