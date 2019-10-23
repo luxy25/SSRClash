@@ -147,8 +147,6 @@ def setPG(nodes):  # 设置策略组 auto,Fallback-auto,Proxy
     #Fallback = "- { name: 'Fallback-auto', type: fallback, proxies: " + str(proxy_names) + ", url: 'http://www.gstatic.com/generate_204', interval: 300 }\n"
 
     
-    
-    
     ##自定义
     HK = "- { name: '香港直连', type: select, proxies: " + str(proxy_namesHK) + " }\n"
     USA = "- { name: '美国直连', type: select, proxies: " + str(proxy_namesUSA) + " }\n"
@@ -189,6 +187,6 @@ def getClash(nodes):  #写文件
 
 
 if __name__ == "__main__":
-    url = ""         #替换订阅，在自定义下替换自己机场的节点标识,test
+    url = ""         #替换订阅，在自定义下替换自己机场的节点标识，运行结束后，在同目录下会生成clash.yml
     nodes = getAllNodes(url)
     getClash(nodes)
