@@ -189,6 +189,6 @@ def getClash(nodes):  #写文件
 
 
 if __name__ == "__main__":
-    url = ""         #替换订阅，在自定义下替换自己机场的节点标识
+    url = ""         #替换订阅，在自定义下替换自己机场的节点标识,test
     nodes = getAllNodes(url)
     getClash(nodes)
