@@ -187,7 +187,7 @@ if __name__ == "__main__":
         url = ""  
         #url2 =  ""      
         #url3 = ''
-        writeRules(url,'stc','usrname','id','githubemail','githubpwd')
+        writeRules(url,'stc','usrname','id','githubemail','githubpwd')         #适合没用服务器的有高度自定义需求的用户
         #writeRules(url2,'stc1','usrname','id','githubemail','githubpwd')
         #writeRules(url3,'stc2','usrname','id','githubemail','githubpwd')
         
