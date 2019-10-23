@@ -17,10 +17,11 @@
     此版解码方法优化，支持大多数机场。 <br/>
     运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
   - CLashAPI：建议使用SSR_Clash_API.py。 <br/>
-   部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml 
+   部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml <br/>
+    python3 SSR_Clash_API.py <br/>
   - QuantumultAPI：建议使用qx.py。 <br/>
-   部署在VPS上，需要python3环境。<br/>
-   python3 api.py <br/>
+   部署在VPS上，需要python3环境。同目录下放置qxconfig<br/>
+   python3 qx.py <br/>
 
    CLashAPI调用方式:
   - SSR订阅到Clash <br/>
