@@ -134,7 +134,7 @@ def writeRules(sublink):    #返回策略组及规则
                 '- { name: "🚀手动选择", type: "select", "proxies": ' + str(other) + '}\n\n\n'\
                 '- { name: "PROXY", type: select, proxies: [ "😀故障切换","🚀手动选择","DIRECT"] }\n'\
                 '- { name: "GlobalMedia", type: select, proxies: ["PROXY","🚀手动选择"] }\n'\
-                '- { name: "DomesticMedia", type: select, proxies: ["DIRECT","PROXY","🚀手动选择"] }\n'\
+                '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","🚀手动选择"] }\n'\
                 '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                 '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
                 '- { name: "Final", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\

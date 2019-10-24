@@ -11,9 +11,7 @@
 
 # 功能介绍
 
-  - 初级：建议使用SSR_CLash_NoGroup.py <br/>
-    没有节点分组，默认不配置DNS。不再更新
-  - 高级：建议使用SSR_Clash_HttpServer.py  <br/>
+  - 本地：建议使用SSR_Clash_HttpServer.py  <br/>
     此版解码方法优化，支持大多数机场。 <br/>
     运行后托管地址输入http://127.0.0.1:8964/?+订阅地址
   - CLashAPI：建议使用SSR_Clash_API.py。 <br/>
