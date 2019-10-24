@@ -48,21 +48,23 @@ server=/*.xiaomi.com/119.29.29.29
 # ssid policy points to the server depending on the network environment.
 #
 [policy]
-available=😀 Auto健康检查, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/BGP.png
-available=😎 BGP, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/BGP.png
-available=😁 IPLC, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/IPLC.png
-available=😂 美国GIA, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/GIA.png
-round-robin=🧻 负载均衡, 长按图标-负载均衡—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/＊1.png
+available=健康检查, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Available.png
+available=BGP健康检测, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/BGP.png
+available=IPLC健康检测, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/IPLC.png
+available=美国GIA健康检测, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/GIA.png
+round-robin=负载均衡, 长按图标-负载均衡—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Round_Robin.png
+
 static=🔒 网易云解锁, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music.png
 static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
+
 static=🎥 Netflix, 长按策略图标-默认手动选择, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
-available=🎬 YouTube, 长按图标-故障切换—至少两个节点, 然后删除无用节点, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
-available=📺 动画疯, 长按图标-故障切换—至少两个节点, 然后删除无用节点, PROXY, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
-available=💻 国外影视, 长按图标-故障切换—至少两个节点, 然后删除无用节点, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
-available=🛀 Telegram, 长按图标-故障切换—至少两个节点, 然后删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
+static=🎬 YouTube, proxy,健康检查,负载均衡, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+static=📺 动画疯, proxy, 健康检查, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
+static=💻 国外影视, proxy,健康检查, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
+static=🛀 Telegram, proxy,健康检查,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
 static=⏱ Speedtest, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
-static=🌏 国外网站, 😀 Auto健康检查,, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
-static=🕹 黑/白名单, 😀 Auto健康检查,, direct, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
+static=🌏 国外网站, proxy, 健康检查,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
+static=🕹 黑/白名单, direct, proxy, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
 
 ;static=policy-name-1, Sample-A, Sample-B, Sample-C
 ;available=policy-name-2, Sample-A, Sample-B, Sample-C
