@@ -133,7 +133,7 @@ def writeRules(sublink):    #返回策略组及规则
                 '- { name: "😀故障切换", type: "fallback", "proxies": ' + str(other) + ', url: "http://www.gstatic.com/generate_204", interval: 300'+ '}\n\n\n'\
                 '- { name: "🚀手动选择", type: "select", "proxies": ' + str(other) + '}\n\n\n'\
                 '- { name: "PROXY", type: select, proxies: [ "😀故障切换","🚀手动选择","DIRECT"] }\n'\
-                '- { name: "ForeignMedia", type: select, proxies: ["PROXY","🚀手动选择"] }\n'\
+                '- { name: "GlobalMedia", type: select, proxies: ["PROXY","🚀手动选择"] }\n'\
                 '- { name: "DomesticMedia", type: select, proxies: ["DIRECT","PROXY","🚀手动选择"] }\n'\
                 '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                 '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
