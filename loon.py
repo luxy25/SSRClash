@@ -27,13 +27,13 @@ def getrules(subs,tags):             # 自定义规则
     
     try:
         rule = Retry_request('https://raw.githubusercontent.com/lzdnico/SSRClash/master/loonconfig')        #请求规则_神机规则
-        rules = str(rule).split('下方粘贴你的订阅链接')
-        proxy = rules[1].split('API标志位1')
+        rules = str(rule).split('# 在[server_remote] 下方粘贴你的订阅链接')
+        proxy = rules[1].split('# API标志位1')
         tag = ''
         for i in range(len(subs)):
             rules[0] += '\n' + tags[i] +  '=' + subs[i] 
-            tag += tags[i] + ', '
-        proxy[0] += '\n' + 'PROXY = select,ss,' +tag
+            tag += ', '+ tags[i]
+        proxy[0] += '\n' + 'PROXY = select,ss' +tag
         return rules[0] + proxy[0] + proxy[1]
         
     except Exception as e:
@@ -59,7 +59,7 @@ def get(name):
     tags = []
     name = name.replace('!','/')
     links = name.split('@@')
-    requests.post('https://api.telegram.org/bot976092923:AAFqWi5Z6XqDffkdxDc7gqyDDMg12ufXFW8/sendMessage?chat_id=447216258&text={text}'.format(text='有人调用了你的QXAPI : \n'+name))
+    #requests.post('https://api.telegram.org/bot976092923:AAFqWi5Z6XqDffkdxDc7gqyDDMg12ufXFW8/sendMessage?chat_id=447216258&text={text}'.format(text='有人调用了你的QXAPI : \n'+name))
 
     for link in links:
         subs.append(link.split('@')[0])
