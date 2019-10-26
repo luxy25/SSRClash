@@ -6,6 +6,8 @@ import  base64
 import  re
 import  requests
 import urllib3
+import urllib
+import urllib.parse
 import json
 import time
 urllib3.disable_warnings()
@@ -34,7 +36,13 @@ def getrules(subs,tags):             # 自定义规则
         tags = str(tags).split('@')
 
         for i in range(len(subs)):
-            rules[0] += '\n' + tags[i] +  '=' + subs[i] 
+            try:
+                link = subs[i].split('regex=')[0]
+                filte = 'regex='+ urllib.parse.quote(subs[i].split('regex=')[1])
+                subs[i] = link+filte
+            except Exception as e:
+                pass
+            rules[0] += '\n' + tags[i] +  '=' + subs[i]
             tag += ', '+ tags[i]
         proxy[0] += '\n' + 'PROXY = select,ss' +tag
         return rules[0] + proxy[0] + proxy[1]
@@ -46,7 +54,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def my():
-    return 'qx api 使用：<br/>调用地址为：http://ip:4567/订阅地址@tag。其中订阅地址中的/替换为!，tag为标签<br/>'\
+    return 'qx api 使用：<br/>调用地址为：http://ip:10087/订阅地址@tag。其中订阅地址中的&替换为!，tag为标签<br/>'\
             '将调用地址复制到qx——配置文件——下载。<br/>'\
             '保存后，长按策略图标，给健康检测添加节点。将最优的节点排在前面。<br/>'
 
@@ -66,4 +74,4 @@ def search():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=False,port=4567)
+    app.run(host='0.0.0.0',debug=False,port=10087)
