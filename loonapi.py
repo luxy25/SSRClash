@@ -43,12 +43,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def my():
-    return 'qx api 使用：<br/>调用地址为：http://ip:2333/订阅地址@tag。其中订阅地址中的/替换为!，tag为标签<br/>'\
+    return 'qx api 使用：<br/>调用地址为：http://ip:4567/订阅地址@tag。其中订阅地址中的/替换为!，tag为标签<br/>'\
             '将调用地址复制到qx——配置文件——下载。<br/>'\
             '保存后，长按策略图标，给健康检测添加节点。将最优的节点排在前面。<br/>'
 
 
-#http://ip:2333/机场1@机场1标签@@机场2@机场2标签@@机场3@机场3标签
+#http://ip:4567/机场1@机场1标签@@机场2@机场2标签@@机场3@机场3标签
 #订阅地址中的/替换为！
 #@@分割机场         
 #机场标签可以不填，如果不填默认值为傻吊家的
@@ -59,8 +59,6 @@ def get(name):
     tags = []
     name = name.replace('!','/')
     links = name.split('@@')
-    #requests.post('https://api.telegram.org/bot976092923:AAFqWi5Z6XqDffkdxDc7gqyDDMg12ufXFW8/sendMessage?chat_id=447216258&text={text}'.format(text='有人调用了你的QXAPI : \n'+name))
-
     for link in links:
         subs.append(link.split('@')[0])
         try:
