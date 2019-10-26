@@ -18,7 +18,10 @@
    部署在VPS上，需要python3环境。同目录下放置general.yml 和lrules.yml <br/>
     python3 SSR_Clash_API.py <br/>
   - QuantumultAPI：建议使用qx.py。 <br/>
-   部署在VPS上，需要python3环境。同目录下放置qxconfig<br/>
+   部署在VPS上，需要python3环境。<br/>
+   python3 qx.py <br/>
+   - LoonAPI：建议使用loonapi.py。 <br/>
+   部署在VPS上，需要python3环境。<br/>
    python3 qx.py <br/>
 
    CLashAPI调用方式:
@@ -44,6 +47,11 @@
    - http://ip:2333/订阅地址1@标签1@@订阅地址2@标签2 <br/>
     其中订阅地址中的/替换为！ <br/>
     标签可不填写，默认标签为傻吊家的节点
+
+  LoonAPI调用方式:
+   - http://ip:10087/loon?sublink=订阅地址1@订阅地址2&tag=标签1@标签2 <br/>
+    其中订阅地址中的&替换为！ <br/>
+    标签与sub一一对应
 
 # 联系我
    - 联系之前先看主页说明
