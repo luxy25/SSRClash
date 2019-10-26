@@ -1,6 +1,6 @@
 # coding=utf-8
 import sys
-from flask import Flask
+from flask import Flask, request
 import flask_restful
 import  base64
 import  re
@@ -30,6 +30,9 @@ def getrules(subs,tags):             # 自定义规则
         rules = str(rule).split('# 在[server_remote] 下方粘贴你的订阅链接')
         proxy = rules[1].split('# API标志位1')
         tag = ''
+        subs = str(subs).split('@')
+        tags = str(tags).split('@')
+
         for i in range(len(subs)):
             rules[0] += '\n' + tags[i] +  '=' + subs[i] 
             tag += ', '+ tags[i]
@@ -37,7 +40,7 @@ def getrules(subs,tags):             # 自定义规则
         return rules[0] + proxy[0] + proxy[1]
         
     except Exception as e:
-        print(e)
+        return '检测格式'
 
 app = Flask(__name__)
 
@@ -47,25 +50,20 @@ def my():
             '将调用地址复制到qx——配置文件——下载。<br/>'\
             '保存后，长按策略图标，给健康检测添加节点。将最优的节点排在前面。<br/>'
 
-
-#http://ip:4567/机场1@机场1标签@@机场2@机场2标签@@机场3@机场3标签
-#订阅地址中的/替换为！
-#@@分割机场         
-#机场标签可以不填，如果不填默认值为傻吊家的
-
-@app.route('/<name>',methods=['GET'])
-def get(name):
-    subs = []
-    tags = []
-    name = name.replace('!','/')
-    links = name.split('@@')
-    for link in links:
-        subs.append(link.split('@')[0])
-        try:
-            tags.append(link.split('@')[1])
-        except Exception as e:
-            tags.append('傻吊家的节点')    
-    return getrules(subs,tags)
     
+@app.route('/loon', methods=['GET', 'POST'])
+def search():
+    try:
+        sub = request.args.get('sublink').replace('!','&')              
+        print(sub)
+        tag=request.args.get('tag')
+        print(tag)
+
+        return  getrules(sub,tag)
+
+    except Exception as e:
+        return '请调用格式适合正确'
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=False,port=4567)
+    app.run(host='0.0.0.0',debug=False,port=2333)
