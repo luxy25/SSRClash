@@ -7,6 +7,7 @@
   - 本地生成CLash配置文件
   - Clash API
   - Quantumult X API 实验阶段
+  - Loon API 实验阶段
  
 
 # 功能介绍
