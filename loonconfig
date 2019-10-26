@@ -18,7 +18,7 @@ ss = Shadowsocks,111.111.1.1,8389,chacha20,"ceshiceshi"
 
 [Proxy Group]
 # API标志位1
-Telegram = url-test,PROXY,DIRECT,url = http://www.gstatic.com/generate_204,interval = 600
+Telegram = select,PROXY,DIRECT
 Apple = select,PROXY,DIRECT
 Advertising = select,REJECT,DIRECT
 Hijacking = select,REJECT,DIRECT

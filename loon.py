@@ -34,7 +34,7 @@ def getrules(subs,tags):             # 自定义规则
             rules[0] += '\n' + tags[i] +  '=' + subs[i] 
             tag += tags[i] + ', '
         proxy[0] += '\n' + 'PROXY = select,ss,' +tag
-        return rules[0] + rules[1]
+        return rules[0] + proxy[0] + proxy[1]
         
     except Exception as e:
         print(e)
