@@ -24,7 +24,7 @@
   - LoonAPI：建议使用loonapi.py。 <br/>
    部署在VPS上，需要python3环境。<br/>
    python3 qx.py <br/>
-  -以上所有脚本均可运行在本地，其中ip改为127.0.0.1即可 <br/> 
+  - 以上所有脚本均可运行在本地，其中ip改为127.0.0.1即可 <br/> 
 
    CLashAPI调用方式:
   - SSR订阅到Clash <br/>
