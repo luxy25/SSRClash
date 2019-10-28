@@ -13,9 +13,8 @@
 # 功能介绍
   - API：建议使用SSR_Clash_API.py。 同目录下放置config、api、templates文件夹下所有文件 <br/>
   - python3 SSR_Clash_API.py 运行脚本 <br/>
-  - 打开：ip:10086/ 按照说明生成托管地址 <br/>
+  - 打开：ip:10086/ 按照说明生成托管地址 <br/><br/><br/>
   ![image](https://github.com/lzdnico/SSRClash/blob/master/images/%E8%AF%B4%E6%98%8E.png) <br/>
-  - 支持SSR_Clash、QuantumultX、Loon、SSR客制化 <br/>
   - 脚本可运行在本地，其中ip改为127.0.0.1即可 <br/> 
 
 

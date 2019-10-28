@@ -321,7 +321,8 @@ def index():
             CustomClash = 'http://127.0.0.1:10086/clashr/nico?sublink='+str(sub)+'&custom='+str(custom)+'&selectfirst=no'
             CustomSSR = 'http://127.0.0.1:10086/ssr/nico?sublink='+str(sub)+'&custom='+str(custom)
         QX = 'http://127.0.0.1:10086/qx/nico?sublink='+str(sub)+'&tag=stc'
-        return render_template('index.html', Clash = Clash,QX = QX,CustomClash = CustomClash,CustomSSR = CustomSSR,Custom =request.form['custom'] ,sub = sub)
+        Loon = 'http://127.0.0.1:10086/loon/nico?sublink='+str(sub)+'&tag=stc'
+        return render_template('index.html', Clash = Clash,QX = QX,Loon=Loon,CustomClash = CustomClash,CustomSSR = CustomSSR,Custom =request.form['custom'] ,sub = sub)
     return render_template('index.html')
 
 @app.route('/clashr/nico', methods=['GET', 'POST'])
