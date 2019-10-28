@@ -9,8 +9,8 @@ import urllib
 import urllib.parse
 import json
 import time
-import qx
-import loon
+import api.qx
+import api.loon
 from flask import Flask,render_template,request
 urllib3.disable_warnings()
 aff = 'STC可用，注册地址：tokyo-hot.stchks.com/auth/register?code=gzI5'
@@ -94,10 +94,10 @@ def getrules():             # 自定义规则
     try:
         finalrules=[]
         
-        with open("./general.yml", "r",encoding = 'utf-8') as f:
+        with open("./config/general.yml", "r",encoding = 'utf-8') as f:
             p_rule = f.read() + '\n'
 
-        with open("./lrules.yml", "r",encoding = 'utf-8') as f:
+        with open("./config/lrules.yml", "r",encoding = 'utf-8') as f:
             l_rule = f.read()        
         
         Peoxies = 'Proxy:\n'
@@ -353,7 +353,7 @@ def qxapi():
         #print(sub)
         tag=request.args.get('tag')
         #print(tag)
-        return  qx.getqxrules(sub,tag)
+        return  api.qx.getqxrules(sub,tag)
 
     except Exception as e:
         return '请调用格式适合正确'
@@ -371,14 +371,14 @@ def ssrapi():
         return '检测调用格式是否正确'
 
 @app.route('/loon/nico', methods=['GET', 'POST'])
-def search():
+def loonapi():
     try:
         sub = request.args.get('sublink').replace('!','&')              
         #print(sub)
         tag=request.args.get('tag')
         #print(tag)
-        return  loon.getrules(sub,tag)
+        return  api.loon.getrules(sub,tag)
     except Exception as e:
         return '请调用格式适合正确'
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=False,port=10086)
+    app.run(host='0.0.0.0',debug=False,port=10086)            #自定义端口
