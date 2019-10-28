@@ -16,7 +16,7 @@ def Retry_request(url): #远程下载
             print('重新下载：'+url)
 def getrules(subs,tags):             # 自定义规则    
     try:
-        rule = Retry_request('https://raw.githubusercontent.com/lzdnico/SSRClash/master/loonconfig')        #请求规则_神机规则
+        rule = Retry_request('https://raw.githubusercontent.com/lzdnico/SSRClash/master/config/loonconfig')        #请求规则_神机规则
         rules = str(rule).split('# 在[server_remote] 下方粘贴你的订阅链接')
         proxy = rules[1].split('# API标志位1')
         tag = ''

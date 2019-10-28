@@ -18,7 +18,7 @@ def Retry_request(url): #远程下载
 def getqxrules(subs,tags):             # 自定义规则
     
     try:
-        rule = Retry_request('https://raw.githubusercontent.com/lzdnico/SSRClash/master/qxconfig')        #请求规则_神机规则
+        rule = Retry_request('https://raw.githubusercontent.com/lzdnico/SSRClash/master/config/qxconfig')        #请求规则_神机规则
         rules = str(rule).split('下方粘贴你的订阅链接')
         subs = str(subs).split('@')
         tags = str(tags).split('@')
