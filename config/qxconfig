@@ -48,14 +48,16 @@ static=🌏 国外网站, 健康检查1,健康检查2,  IPLC健康检测,   img-
 static=🕹 黑/白名单, direct, 健康检查1,健康检查2,  IPLC健康检测,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
 
 [server_remote]
+
 # 在[server_remote] 下方粘贴你的订阅链接
 
+https://raw.githubusercontent.com/lzdnico/SSRClash/master/config/sslist, tag = NicoNewBeee, enabled=true 
 [filter_remote]
 
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Unbreak.list, tag=Unbreak, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Advertising.list, tag=🚦去广告, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Hijacking.list, tag=🚫 运营商劫持, enabled=true
-https://pan.jiaowoy.top/Share/Rules/Quantumult%20X/NeteaseMusic.list, tag=🔒 网易云解锁,force-policy=🔒 网易云解锁, enabled=true
+https://raw.githubusercontent.com/lzdnico/SSRClash/master/config/wyylist, tag=🔒 网易云解锁,force-policy=🔒 网易云解锁, enabled=true
 https://raw.githubusercontent.com/limbopro/Profiles/master/Quantumult/X/Filter/Media/Bahamut.list, tag=📺 动画疯, force-policy=📺 动画疯, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/Netflix.list, tag=🎥 Netflix, force-policy=🎥 Netflix, enabled=true
 https://raw.githubusercontent.com/ConnersHua/Profiles/master/Quantumult/X/Filter/Media/YouTube.list, tag=🎬 YouTube, force-policy=🎬 YouTube, enabled=true
@@ -73,10 +75,6 @@ http://cloudcompute.lbyczf.com/quanx-rewrite, tag=lhie1复写, enabled=true
 
 
 [server_local]
-
-shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按图标-故障切换—至少两个节点
-shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按策略图标-手动选择
-shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=删除无用节点
 
 
 [filter_local]
