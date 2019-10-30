@@ -80,7 +80,7 @@ def getrules():             # 自定义规则
     rules = Retry_request('https://raw.githubusercontent.com/ConnersHua/Profiles/master/Clash/Pro.yaml')        #请求规则_神机规则
     p_rule= Retry_request('https://raw.githubusercontent.com/lzdnico/ToClash/master/General.yml')               #基础规则_默认不配置DNS
     #p_rule=rules.split('Proxy:')[0]                                                                            #基础规则_默认配置DNS,与上面二选一
-    l_rule =  rules.split('Rule:\n')[1].replace('ForeignMedia','国际媒体').replace('DomesticMedia','国内媒体').replace('Hijacking','恶意网站').replace('Final','漏网之鱼').replace('PROXY','代理模式')
+    l_rule =  rules.split('Rule:\n')[1].replace('GlobalMedia','国际媒体').replace('HKMTMedia','国内媒体').replace('Hijacking','恶意网站').replace('Final','漏网之鱼').replace('PROXY','代理模式')
     nf_rule = l_rule.split('# > Netflix\n')[1].split('# > PBS\n')[0].replace('国际媒体','Netflix')
     l_rule = nf_rule+l_rule
     Peoxies = 'Proxy:\n'
