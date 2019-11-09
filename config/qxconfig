@@ -1,4 +1,3 @@
-
 [general]
 geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/limbopro/QuantumultX/master/Scripts/IP_API.js
 
@@ -31,21 +30,20 @@ server=/*.xiaomi.com/119.29.29.29
 
 [policy]
 
-available=健康检查1, 长按图标-故障切换—至少两个节点,删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Hong_Kong.png
-available=健康检查2, 长按图标-故障切换—至少两个节点,删除无用节点,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Available.png
-available=IPLC健康检测, 长按图标-故障切换—至少两个节点,删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/IPLC.png
-
-static=🔒 网易云解锁, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netease_Music_Unlock.png
-static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
-
-static=🎥 Netflix, 长按策略图标-手动选择, 删除无用节点, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix_Letter.png
-static=🎬 YouTube, 健康检查1,健康检查2, IPLC健康检测,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+available=健康检查1, 长按图标—至少两个节点,删除无用节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Hong_Kong.png
+available=健康检查2, 长按图标—至少两个节点,删除无用节点,  img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Available.png
+available=IPLC健康检测, 长按图标—至少两个节点,删除无用节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/IPLC.png
+round-robin=负载均衡1, 长按图标—至少两个节点,删除无用节点, img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/Round_Robin.png
+static=🔒 网易云解锁, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netease_Music_Unlock.png
+static=🍎 苹果服务, direct, proxy, img-url= https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png
+static=🎥 Netflix, 长按策略图标-手动选择, 删除无用节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Netflix_Letter.png
+static=🎬 YouTube, 负载均衡1, 健康检查1,健康检查2, IPLC健康检测,  img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/YouTube.png
 static=📺 动画疯, 健康检查1,健康检查2,  IPLC健康检测,  img-url=https://raw.githubusercontent.com/limbopro/Zure/master/IconSet/gamer-1.png
-static=💻 国外影视, 健康检查1,健康检查2, IPLC健康检测,  direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/ForeignMedia.png
-static=🛀 Telegram, 健康检查1,健康检查2, IPLC健康检测,   img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Telegram.png
-static=⏱ Speedtest, proxy, direct, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Speedtest.png
-static=🌏 国外网站, 健康检查1,健康检查2,  IPLC健康检测,   img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Global.png
-static=🕹 黑/白名单, direct, 健康检查1,健康检查2,  IPLC健康检测,  img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Final.png
+static=💻 国外影视, 健康检查1,健康检查2, IPLC健康检测,  direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/ForeignMedia.png
+static=🛀 Telegram, 健康检查1,健康检查2, IPLC健康检测,   img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Telegram.png
+static=⏱ Speedtest, proxy, direct, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Speedtest.png
+static=🌏 国外网站, 健康检查1,健康检查2,  IPLC健康检测,   img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Global.png
+static=🕹 黑/白名单, direct, 健康检查1,健康检查2,  IPLC健康检测,  img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Final.png
 
 [server_remote]
 
@@ -75,7 +73,7 @@ http://cloudcompute.lbyczf.com/quanx-rewrite, tag=lhie1复写, enabled=true
 
 [server_local]
 
-shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按图标-故障切换—至少两个节点
+shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按图标—至少两个节点
 shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=长按策略图标-手动选择
 shadowsocks=ss-a.example.com:80, method=chacha20, password=pwd, obfs=http, obfs-host=bing.com, obfs-uri=/resource/file, fast-open=false, udp-relay=false, tag=删除无用节点
 
@@ -194,7 +192,7 @@ https:\/\/ios\.xiaoxiaoapps\.com\/getGlobalData url reject
 ^https://account.wps.cn/api/users/ url script-response-body eHpo1/Surge/wps.js
 
 # 万象电视直播
-#^https:\/\/u\.kanghuayun\.com\/api\/v2\/info url script-response-body NobyDa/Script/Surge/JS/wxzb.js
+^https:\/\/u\.kanghuayun\.com\/api\/v2\/info url script-response-body NobyDa/Script/Surge/JS/wxzb.js
 
 # Gyroscope 解锁 pro (By Maasea)
 ^https:\/\/api\.gyrosco\.pe\/v1\/account\/$ url script-response-body NobyDa/Script/Surge/JS/gyroscope.js
