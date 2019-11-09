@@ -15,7 +15,10 @@
   - python3 api.py 运行脚本 <br/>
   - 打开：ip:10010/ 按照说明生成托管地址 <br/>
   - ip和端口在api文件下的aff里面配置，端口需与main函数一致。默认为10010<br/>
+  - 托管地址生成页面示意图<br/>
   ![image](https://github.com/lzdnico/SSRClash/blob/newapi/images/%E8%AF%B4%E6%98%8E.png) <br/>
+  - STC机场客制化节点分组示意图<br/>
+  ![image](https://github.com/lzdnico/SSRClash/blob/newapi/images/example.png) <br/>
   - 脚本可运行在本地，其中ip改为127.0.0.1即可 <br/> 
 
 
