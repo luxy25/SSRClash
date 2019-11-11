@@ -125,7 +125,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                   'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
             Peoxies +='- '+str(Json)+'\n'    #节点加加
-            other.insert(0,remark)           #节点名list加加
+            other.append(remark)           #节点名list加加
         
         proxy = str(other)                   #节点名转化为字符串
         proxy1 = proxy[1:-1]                 #节点名字符串去掉中括号

@@ -222,18 +222,18 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
                                 Json={ 'name': remark, 'type': 'ss', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                                 'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'obfs': nodeR['obfs'] }
                                 Peoxies +='- '+str(Json)+'\n'
-                                groups[i].insert(0,remark)
+                                groups[i].append(remark)
                                 other.append(remark)
                             else:
                                 if remark in noderemark:
-                                    groups[i].insert(0,remark)
+                                    groups[i].append(remark)
                                     continue
                                 else:
                                     Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                                     'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
                                     noderemark += remark
                                     Peoxies +='- '+str(Json)+'\n'
-                                    groups[i].insert(0,remark)
+                                    groups[i].append(remark)
                                     other.append(remark)                                
                         else :
                             continue
@@ -244,18 +244,18 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
                             Json={ 'name': remark, 'type': 'ss', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                             'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'obfs': nodeR['obfs'] }
                             Peoxies +='- '+str(Json)+'\n'
-                            groups[i].insert(0,remark)
+                            groups[i].append(remark)
                             other.append(remark)
                         else:
                             if remark in noderemark:
-                                groups[i].insert(0,remark)
+                                groups[i].append(remark)
                                 continue
                             else:
                                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                                 'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
                                 noderemark += remark
                                 Peoxies +='- '+str(Json)+'\n'
-                                groups[i].insert(0,remark)
+                                groups[i].append(remark)
                                 other.append(remark)
                 else:                              #每组第一个不匹配
                     continue
@@ -265,20 +265,21 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
         clashname = ''
         methods = methods.split('@')
         for i in range(len(groups)):
-            if i == 0:
-                continue
-            if methods[i] == 'select' :
-                clashgroup  += '- { ' + 'name: "{name}手动选择", type: "select", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                clashname += '"{name}手动选择",'.format(name=str(flags[i]).replace('&',''))
-            if methods[i] == 'fallback' :
-                clashgroup  += '- { ' + 'name: "{name}故障切换", type: "fallback", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                clashname += '"{name}故障切换",'.format(name=str(flags[i]).replace('&',''))
-            if methods[i] == 'load-balance' :
-                clashgroup  += '- { ' + 'name: "{name}负载均衡", type: "load-balance", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                clashname += '"{name}负载均衡",'.format(name=str(flags[i]).replace('&',''))   
-            if methods[i] == 'url-test' :
-                clashgroup  += '- { ' + 'name: "{name}延迟最低", type: "url-test", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                clashname += '"{name}延迟最低",'.format(name=str(flags[i]).replace('&',''))                 
+            for j in range(len(methods)):
+                if i == 0:
+                    continue
+                if methods[j] == 'select' :
+                    clashgroup  += '- { ' + 'name: "{name}手动选择", type: "select", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+                    clashname += '"{name}手动选择",'.format(name=str(flags[i]).replace('&',''))
+                if methods[j] == 'fallback' :
+                    clashgroup  += '- { ' + 'name: "{name}故障切换", type: "fallback", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+                    clashname += '"{name}故障切换",'.format(name=str(flags[i]).replace('&',''))
+                if methods[j] == 'load-balance' :
+                    clashgroup  += '- { ' + 'name: "{name}负载均衡", type: "load-balance", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+                    clashname += '"{name}负载均衡",'.format(name=str(flags[i]).replace('&',''))   
+                if methods[j] == 'url-test' :
+                    clashgroup  += '- { ' + 'name: "{name}延迟最低", type: "url-test", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+                    clashname += '"{name}延迟最低",'.format(name=str(flags[i]).replace('&',''))       
         clashname = clashname[:-1]
         #print(clashgroup)
         #print(clashname) 
