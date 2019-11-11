@@ -152,7 +152,6 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
                     flags[i] = '🇦🇺&' + flags[i]
                     break
                 else :
-                    flags[i] = '&' + flags[i]
                     break            
         #ssrdata = data.strip().replace('==','').split('\n')     
         groups = [[] for _ in range(len(flags))]
@@ -238,6 +237,7 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
                         else :
                             continue
                     else :                         #每组是否有多个匹配要求   @香港&1倍@美国     适用 美国这组
+                        print('not in flags')
                         if nodeR['protocol_param'] == '' and  nodeR['obfs_param'] == '' and nodeR['protocol'] == 'origin' and nodeR['obfs'] == 'plain':    #判断是否为ssr
                             if nodeR['method'] == 'none':
                                 continue
@@ -259,8 +259,6 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
                                 other.append(remark)
                 else:                              #每组第一个不匹配
                     continue
-
-        #print(groups)  
         clashgroup = '\n'
         clashname = ''
         methods = methods.split('@')
@@ -289,7 +287,9 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
         rules = getrules(emoji)
         if emoji == 'yes':
             ProxyGroup='\n\nProxy Group:\n\n' \
-                        '- { name: "🔰 代理模式", type: select, proxies: ['  + clashname + ', "DIRECT",] }\n'\
+                        '- { name: "🔰 代理模式", type: select, proxies: ["🤚手动选择","❌故障切换",'  + clashname + ', "DIRECT",] }\n'\
+                        '- { name: "🤚手动选择", type: "select", "proxies": ' + proxy + '}\n'\
+                        '- { name: "❌故障切换", type: "fallback", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
                         '- { name: "🎥 NETFLIX", type: select, proxies: ["🔰 代理模式",'+ clashname +'] }\n'\
                         '- { name: "📹 YouTube", type: select, proxies: ["🔰 代理模式",'+ clashname +'] }\n'\
                         '- { name: "📺 巴哈姆特", type: select, proxies: ["🔰 代理模式",'+ clashname +'] }\n'\
@@ -302,6 +302,8 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
         else :
             ProxyGroup='\n\nProxy Group:\n\n' \
                         '- { name: "代理模式", type: select, proxies: ['  + clashname + ', "DIRECT",] }\n'\
+                        '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
+                        '- { name: "故障切换", type: "fallback", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
                         '- { name: "Netflix", type: select, proxies: ["代理模式",'+ clashname +'] }\n'\
                         '- { name: "Youtube", type: select, proxies: ["代理模式",'+ clashname +'] }\n'\
                         '- { name: "动画疯", type: select, proxies: ["代理模式",'+ clashname +'] }\n'\
