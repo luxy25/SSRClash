@@ -17,13 +17,13 @@ def safe_base64_decode(s): # 解码
         base64_str = base64.urlsafe_b64decode(s)
         return bytes.decode(base64_str)
     except Exception as e:
-        print('解码错误')   
+        print('解码错误1')   
 
 def safe_base64_encode(s): # 加密
     try:
         return base64.urlsafe_b64encode(bytes(s, encoding='utf8'))
     except Exception as e:
-        print('解码错误',e)
+        print('解码错误2',e)
 
 def Retry_request(url): #远程下载
     i = 0
@@ -263,21 +263,24 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
         clashname = ''
         methods = methods.split('@')
         for i in range(len(groups)):
-            for j in range(len(methods)):
-                if i == 0:
-                    continue
-                if methods[j] == 'select' :
-                    clashgroup  += '- { ' + 'name: "{name}手动选择", type: "select", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                    clashname += '"{name}手动选择",'.format(name=str(flags[i]).replace('&',''))
-                if methods[j] == 'fallback' :
-                    clashgroup  += '- { ' + 'name: "{name}故障切换", type: "fallback", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                    clashname += '"{name}故障切换",'.format(name=str(flags[i]).replace('&',''))
-                if methods[j] == 'load-balance' :
-                    clashgroup  += '- { ' + 'name: "{name}负载均衡", type: "load-balance", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                    clashname += '"{name}负载均衡",'.format(name=str(flags[i]).replace('&',''))   
-                if methods[j] == 'url-test' :
-                    clashgroup  += '- { ' + 'name: "{name}延迟最低", type: "url-test", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
-                    clashname += '"{name}延迟最低",'.format(name=str(flags[i]).replace('&',''))       
+        	if len(str(groups[i]))<3:
+        		continue
+        	else:	
+	            for j in range(len(methods)):
+	                if i == 0:
+	                    continue
+	                if methods[j] == 'select' :
+	                    clashgroup  += '- { ' + 'name: "{name}手动选择", type: "select", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+	                    clashname += '"{name}手动选择",'.format(name=str(flags[i]).replace('&',''))
+	                if methods[j] == 'fallback' :
+	                    clashgroup  += '- { ' + 'name: "{name}故障切换", type: "fallback", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+	                    clashname += '"{name}故障切换",'.format(name=str(flags[i]).replace('&',''))
+	                if methods[j] == 'load-balance' :
+	                    clashgroup  += '- { ' + 'name: "{name}负载均衡", type: "load-balance", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+	                    clashname += '"{name}负载均衡",'.format(name=str(flags[i]).replace('&',''))   
+	                if methods[j] == 'url-test' :
+	                    clashgroup  += '- { ' + 'name: "{name}延迟最低", type: "url-test", "proxies": '.format(name=str(flags[i]).replace('&','')) + str(groups[i]) + ', url: "http://www.gstatic.com/generate_204", interval: 450 }\n'
+	                    clashname += '"{name}延迟最低",'.format(name=str(flags[i]).replace('&',''))       
         clashname = clashname[:-1]
         #print(clashgroup)
         #print(clashname) 
@@ -287,7 +290,7 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
         rules = getrules(emoji)
         if emoji == 'yes':
             ProxyGroup='\n\nProxy Group:\n\n' \
-                        '- { name: "🔰 代理模式", type: select, proxies: ["🤚手动选择","❌故障切换",'  + clashname + ', "DIRECT",] }\n'\
+                        '- { name: "🔰 代理模式", type: select, proxies: ["❌故障切换","🤚手动选择",'  + clashname + ', "DIRECT",] }\n'\
                         '- { name: "🤚手动选择", type: "select", "proxies": ' + proxy + '}\n'\
                         '- { name: "❌故障切换", type: "fallback", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
                         '- { name: "🎥 NETFLIX", type: select, proxies: ["🔰 代理模式",'+ clashname +'] }\n'\
@@ -301,7 +304,7 @@ def writeRulescustom(sublink,flagname,methods,emoji):    #客制化策略组及�
                         'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n' \
-                        '- { name: "代理模式", type: select, proxies: ['  + clashname + ', "DIRECT",] }\n'\
+                        '- { name: "代理模式", type: select, proxies: ["故障切换","手动选择",'  + clashname + ', "DIRECT",] }\n'\
                         '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
                         '- { name: "故障切换", type: "fallback", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
                         '- { name: "Netflix", type: select, proxies: ["代理模式",'+ clashname +'] }\n'\

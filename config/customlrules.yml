@@ -347,6 +347,9 @@
 # > bilibili
 - DOMAIN-SUFFIX,bilibili.com,🌏 国内媒体
 - DOMAIN,upos-hz-mirrorakam.akamaized.net,🌏 国内媒体
+# > 163
+- DOMAIN-SUFFIX,music.163.com,🌏 国内媒体
+- DOMAIN-SUFFIX,music.126.net,🌏 国内媒体
 
 # (DNS Cache Pollution Protection)
 # > Google
